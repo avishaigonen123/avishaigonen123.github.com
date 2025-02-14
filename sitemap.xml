@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <sitemap>
+    <!-- <sitemap>
         <loc>https://avishaigonen123.github.io/CTF_writeups/webhacking.kr/sitemap-WebhackinrDotKr.xml</loc>
     </sitemap>
     <sitemap>
@@ -14,7 +14,7 @@
     </sitemap>
     <sitemap>
         <loc>https://avishaigonen123.github.io/CTF_writeups/pwnable.kr/sitemap-pwnableDotKr.xml</loc>
-    </sitemap>
+    </sitemap> -->
     <sitemap>
         <loc>https://avishaigonen123.github.io/CTF_writeups/ringzer0/sitemap-ringzer0.xml</loc>
     </sitemap>
