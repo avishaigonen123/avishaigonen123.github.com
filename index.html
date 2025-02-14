@@ -18,6 +18,9 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Typed.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 
 <body>
@@ -36,6 +39,9 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+    <div class="social-links text-center">
+      <a href="https://www.linkedin.com/in/avishaigonen" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    </div>
   </header>
 
   <main>
@@ -71,7 +77,7 @@
         <ul>
           <li><a href="https://github.com/avishaigonen123/Mossad_CTF">Mossad CTF</a></li>
           <li><a href="https://github.com/avishaigonen123/Time-side-channel-attack">Time Side-Channel Attack</a></li>
-          <li><a href="https://github.com/avishaigonen123/CTF-Writeups">CTF Writeups Repository</a></li>
+          <li><a href="https://github.com/avishaigonen123/CTF_Writeups">CTF Writeups Repository</a> <a> | </a> <a href="https://avishaigonen123.github.io/CTF_writeups/">CTF Writeups Website</a></li>
           <li><a href="https://github.com/avishaigonen123/TelegramBot">Telegram Bot</a></li>
         </ul>
       </div>
@@ -93,5 +99,21 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Typed.js Initialization -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var options = {
+        strings: ["Cybersecurity Enthusiast", "Developer", "CTF Competitor"],
+        typeSpeed: 50,  // typing speed
+        backSpeed: 25,  // backspacing speed
+        backDelay: 1000, // time before backspacing
+        loop: true  // make it loop
+      };
+
+      var typed = new Typed(".typed", options);
+    });
+  </script>
 </body>
+
 </html>
