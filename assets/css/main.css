@@ -246,6 +246,40 @@ h6 {
   background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
 }
 
+/* CSS for project images */
+.project-image {
+  max-width: 80%; /* Limit the image width */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: 15px; /* Add some space above the image */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.project-image:hover {
+  transform: scale(1.05); /* Slight zoom effect when hovering */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Slightly more shadow when hovering */
+}
+
+/* Optional: Add some styling to the project items themselves */
+.project-item {
+  margin-bottom: 30px; /* Space between projects */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for each project */
+  border-radius: 8px; /* Rounded corners for the project items */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.project-item h4 {
+  margin-bottom: 10px; /* Space between title and description */
+}
+
+.project-item p {
+  line-height: 1.6; /* Improve readability */
+  margin-bottom: 15px; /* Space between description and image */
+}
+
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
