@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>בורקס, חתול, ופישינג</title>
+  <style>
+    body {
+      direction: rtl;
+      font-family: 'Alef', sans-serif;
+      background: linear-gradient(to right, #2b5876, #4e4376);
+      color: #fff;
+      text-align: center;
+      padding: 60px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    img.burp {
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .note {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    /* אנימציית חתול */
+    .cat {
+      position: fixed;
+      bottom: 0;
+      left: -100px;
+      width: 80px;
+      animation: catWalk 8s linear infinite;
+      z-index: 999;
+    }
+
+    @keyframes catWalk {
+      0% { left: -100px; transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+      100% { left: 110%; transform: rotate(0deg); }
+    }
+
+    /* בורקסים עפים */
+    .bourekas {
+      position: absolute;
+      width: 40px;
+      animation: float 5s ease-in-out infinite;
+      opacity: 0.8;
+    }
+
+    .bourekas:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .bourekas:nth-child(2) {
+      top: 30%;
+      left: 70%;
+      animation-delay: 1.5s;
+    }
+
+    .bourekas:nth-child(3) {
+      top: 50%;
+      left: 40%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(15deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>סייברסייבר, תפסתם פישינג 😼</h1>
+  <p>הכפתור במייל? פייק. הלינק? שלי. הקורבן? סקרן.</p>
+
+  <img src="burp.png" class="burp" alt="צילום מ־Burp Suite">
+
+  <div class="note">
+    רק הדגמה חמודה. לא נגעתי בכלום.
+  </div>
+
+  <!-- חתול הולך -->
+  <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="חתול" class="cat">
+
+  <!-- בורקסים -->
+  <img src="https://i.imgur.com/Y6O3TmA.png" class="bourekas">
+  <img src="https://i.imgur.com/Y6O3TmA.png" class="bourekas">
+  <img src="https://i.imgur.com/Y6O3TmA.png" class="bourekas">
+
+</body>
+</html>
