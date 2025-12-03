@@ -4,279 +4,270 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Avishai Gonen | Cybersecurity & CTF Writeups</title>
-  <meta content="Cybersecurity, Networking, CTF, Development" name="keywords">
-  
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <title>Avishai Gonen | Cybersecurity Research & CTF Writeups</title>
+  <meta name="keywords" content="Cybersecurity, CTF, Research, Reverse Engineering, Web Hacking">
+  <link rel="icon" href="assets/img/favicon.ico">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
+  <!-- Bootstrap -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- Typed.js library -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-  <!-- Add Custom CSS to style the background, typography, links, and portfolio section -->
   <style>
-    /* Background Image */
     body {
+      font-family: "Inter", sans-serif;
       background-image: url('assets/img/hero-bg.jpg');
       background-size: cover;
-      background-position: center center;
       background-attachment: fixed;
+      background-position: center;
       color: white;
+      margin: 0;
     }
 
-    /* Hero Section */
-    #hero {
-      background-image: url('assets/img/hero-bg.jpg');
-      background-size: cover;
-      background-position: center center;
-      color: white;
-      padding: 60px 0;
-    }
-
-    /* Padding for sections */
-    .section {
-      padding: 60px 0;
-    }
-
-    /* Typography Improvements */
-    h2 {
-      font-size: 36px;
-      font-weight: 700;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-    }
-
-    p {
-      font-size: 18px;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Navigation Bar */
+    /* NAVIGATION */
     #navmenu {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 15px 0;
+      backdrop-filter: blur(5px);
       position: sticky;
       top: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
+      z-index: 999;
     }
 
-    /* Portfolio Section Styling */
-    #portfolio ul {
-      list-style-type: none;
+    #navmenu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0;
       padding: 0;
     }
 
-    #portfolio li {
-      margin-bottom: 20px;
-    }
-
-    #portfolio a {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #ff6347;
-      color: white;
-      font-weight: bold;
-      border-radius: 5px;
-      text-align: center;
-      transition: background-color 0.3s ease;
+    #navmenu a {
+      color: #f1f1f1;
+      font-weight: 600;
       text-decoration: none;
+      font-size: 17px;
+      transition: 0.2s;
     }
 
-    #portfolio a:hover {
-      background-color: #f1c40f;
-    }
-
-    /* Links Styling */
-    a {
-      color: #ff6347;
-      text-decoration: none;
-    }
-
-    a:hover {
+    #navmenu a:hover {
       color: #f1c40f;
+    }
+
+    /* HERO */
+    #hero {
+      padding: 120px 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    #hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    #hero p {
+      font-size: 22px;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .primary-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background-color: #ff6347;
+      border-radius: 6px;
+      font-size: 20px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .primary-button:hover {
+      background-color: #f1c40f;
+      color: black;
+    }
+
+    /* SECTIONS */
+    .section {
+      background: rgba(0, 0, 0, 0.55);
+      margin: 50px auto;
+      padding: 50px 25px;
+      border-radius: 12px;
+      max-width: 1100px;
+    }
+
+    h2.section-title {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    p,
+    li {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* GRID CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      text-shadow: none;
+      color:rgba(13, 195, 236, 0.5);
+    }
+
+    .card h3 {
+      color:rgba(255, 255, 255, 0.5);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      color: #ff6347;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      color: #f1c40f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background: rgba(0, 0, 0, 0.6);
     }
   </style>
 </head>
 
 <body>
-  <header id="header" class="header dark-background d-flex flex-column">
-    <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="Avishai Gonen" class="img-fluid rounded-circle">
-    </div>
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <h1 class="sitename">Avishai Gonen</h1>
+
+  <!-- NAV -->
+  <nav id="navmenu">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION (FOCUSES ON CTF WEBSITE) -->
+  <section id="hero">
+    <h1>Avishai Gonen</h1>
+    <p>Cybersecurity Researcher • CTF Competitor • Reverse Engineer</p>
+
+    <!-- ⭐ MAIN BUTTON TO YOUR CTF WEBSITE ⭐ -->
+    <a href="https://avishaigonen123.github.io/CTF_writeups/" target="_blank" class="primary-button">
+      🔥 Visit My CTF Writeups Website
     </a>
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#portfolio">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="social-links text-center">
-      <a href="https://www.linkedin.com/in/avishai-gonen-997148289/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+
+    <p style="margin-top: 15px; font-size: 18px;">
+      Full walkthroughs, exploitation techniques, reverse engineering, and more.
+    </p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <p>
+      I'm a 20-year-old Computer Science graduate with a strong passion for cybersecurity,
+      capturing the flag (CTF), web exploitation, and reverse engineering.
+      I placed 2nd in the LevTech GreatMinds Hackathon and focus on deep-dive technical research.
+    </p>
+    <p>
+      My interests include vulnerabilities, cryptography, timing attacks, malware analysis,
+      network forensics, and researching real-world exploit chains.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <h2 class="section-title">Featured Projects</h2>
+
+    <div class="grid">
+
+      <!-- CTF Writeups -->
+      <div class="card" style="border: 2px solid #ff6347;">
+        <h3>🔍 CTF Writeups (Main Website)</h3>
+        <p>My detailed writeups for dozens of challenges across various CTFs.</p>
+        <a href="https://avishaigonen123.github.io/CTF_writeups/" target="_blank">Visit Website</a> |
+        <a href="https://github.com/avishaigonen123/CTF_Writeups" target="_blank">GitHub</a>
+      </div>
+
+      <!-- Time Side Channel Attack -->
+      <div class="card">
+        <h3>⏱️ Time Side-Channel Attack</h3>
+        <p>Built a TSCA proof-of-concept using Arduino C++ + Python, demonstrating cryptographic timing leaks.</p>
+        <a href="https://github.com/avishaigonen123/Time-side-channel-attack" target="_blank">GitHub</a>
+      </div>
+
+      <!-- Telegram Bot -->
+      <div class="card">
+        <h3>🤖 Telegram News Bot</h3>
+        <p>Automated bot distributing regional intelligence updates.</p>
+        <a href="https://github.com/avishaigonen123/TelegramBot" target="_blank">GitHub</a>
+      </div>
+
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section id="hero" class="hero section dark-background">
-      <div class="container">
-        <h2>Avishai Gonen</h2>
-        <p>I'm a <span class="typed" data-typed-items="Cybersecurity Enthusiast, Developer, CTF Competitor"></span></p>
+  <!-- RESEARCH -->
+  <section id="research" class="section">
+    <h2 class="section-title">Cybersecurity Research</h2>
+
+    <div class="grid">
+
+      <!-- DigitalWhisper Research -->
+      <div class="card" style="border: 2px solid #1abc9c;">
+        <h3>📘 GraphQL Injection Research (DigitalWhisper)</h3>
+        <p>
+          Published research in DigitalWhisper Magazine analyzing GraphQL injection vectors,
+          exploitation, attack chains, and real-world weaknesses.
+        </p>
+        <a href="https://digitalwhisper.co.il/files/Zines/0xB1/DW177-2-GraphQLInjection.pdf" target="_blank">
+          Read the Research PDF
+        </a>
       </div>
-    </section>
 
-    <section id="about" class="about section">
-      <div class="container">
-        <h2>About</h2>
-        <p>I'm a 20-year-old Computer Science graduate with a passion for cybersecurity, web hacking, and reverse engineering. I placed 2nd in the LevTech GreatMinds 8 Hackathon and specialize in CTF challenges and security research.</p>
-      </div>
-    </section>
-
-    <section id="resume" class="resume section">
-      <div class="container">
-        <h2>Resume</h2>
-    
-        <div class="resume-item">
-          <h3>About Me</h3>
-          <p>I'm a curious person with a strong passion for Computer Science, especially in cybersecurity and reverse engineering. Eager to serve in IDF special units, I aim to apply my skills and knowledge for meaningful contributions to enhance national security through the 8200 Unit of the Military Intelligence Directorate.</p>
-          <p>Contact: <a href="mailto:avishaigonen@gmail.com">avishaigonen@gmail.com</a></p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/avishai-gonen-997148289/" target="_blank">linkedin.com/in/avishai-gonen</a></p>
-          <p>GitHub: <a href="https://github.com/avishaigonen123" target="_blank">github.com/avishaigonen123</a></p>
-        </div>
-    
-        <div class="resume-item">
-          <h3>Education</h3>
-          <p><strong>B.Sc in Computer Science</strong></p>
-          <p>Jerusalem College of Technology, Jerusalem, Israel</p>
-          <ul>
-            <li>Reverse Engineering: 100</li>
-            <li>Operating System: 100</li>
-            <li>Computer Networks: 99</li>
-
-            <li>Final Grade: 98</li>
-          </ul>
-        </div>
-    
-        <div class="resume-item">
-          <h3>Personal Projects</h3>
-        
-          <div class="project-item">
-            <h4>TIME SIDE CHANNEL ATTACK (TSCA) PROJECT</h4>
-            <p><strong>JCT, Jerusalem | 13/1/2024 – 22/7/2024</strong></p>
-            <p>Implemented Time Side Channel Attacks (TSCA) to explore vulnerabilities in cryptographic systems using C++ (Arduino) and Python, enhancing expertise in cryptography, timing analysis, and embedded systems.</p>
-            <img src="assets/img/TSCA_project.jpg" alt="TSCA Project Image" class="project-image">
-          </div>
-        
-          <div class="project-item">
-            <h4>2ND PLACE IN GREATMINDS 8 HACKATHON AT JCT</h4>
-            <p><strong>GPS System for Emergency Response Teams | 22/6/2024 – 23/6/2024</strong></p>
-            <p>Developed "Mikomander", a GPS system to prevent friendly fire incidents, earning 2nd place in the LevTech GreatMinds 8 Hackathon.</p>
-            <img src="assets/img/hackathon.jpg" alt="GreatMinds 8 Hackathon Project Image" class="project-image">
-          </div>
-        </div>
-        
-        
-        <div class="resume-item">
-          <h3>Languages</h3>
-          <ul>
-            <li>Hebrew: Native Proficiency</li>
-            <li>English: Full Professional Proficiency</li>
-          </ul>
-        </div>
-    
-        <div class="resume-item">
-          <h3>Skills</h3>
-          <ul>
-            <li>Python, C++, Java, JavaScript, Assembly</li>
-            <li>Reverse Engineering, Web Hacking, SQL</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    
-
-    <section id="portfolio" class="portfolio section">
-      <div class="container">
-        <h2>Featured Projects</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-
-          <!-- CTF Writeups (Highlighted) -->
-          <div style="border: 2px solid #007BFF; border-radius: 12px; padding: 20px; background-color: #f0f8ff;">
-            <h3>🔍 <b>CTF Writeups (Highly Recommended!)</b></h3>
-            <p>Explore my in-depth writeups from various CTFs. Challenges, solutions, and walkthroughs.</p>
-            <a href="https://github.com/avishaigonen123/CTF_Writeups" target="_blank">GitHub Repository</a> |
-            <a href="https://avishaigonen123.github.io/CTF_writeups/" target="_blank">🌐 Visit Website</a>
-          </div>
-
-          <!-- Time Side-Channel Attack -->
-          <div style="border: 1px solid #ccc; border-radius: 12px; padding: 20px;">
-            <h3>⏱️ Time Side-Channel Attack</h3>
-            <p>A proof-of-concept attack that exploits timing differences in code execution.</p>
-            <a href="https://github.com/avishaigonen123/Time-side-channel-attack" target="_blank">GitHub Repository</a>
-          </div>
-
-          <!-- Telegram Bot -->
-    <div style="border: 1px solid #ccc; border-radius: 12px; padding: 20px;">
-      <h3>🤖 Telegram Bot</h3>
-      <p>Automated news distribution bot for key regions via Telegram channels.</p>
-      <p><strong>Join Our Channels:</strong></p>
-      <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
-        <li>📢 <strong>Jenin News:</strong> <a href="https://t.me/+MGnQsMZ5FL5mNjk8" target="_blank">Join Here</a></li>
-        <li>📢 <strong>Nablus News:</strong> <a href="https://t.me/+9vULSIuHQ7RlYjI0" target="_blank">Join Here</a></li>
-        <li>📢 <strong>Gaza News:</strong> <a href="https://t.me/+_b4ZozXYKi41OGM0" target="_blank">Join Here</a></li>
-        <li>📢 <strong>Iran News:</strong> <a href="https://t.me/+a-fAkmiPVu1kMDZk" target="_blank">Join Here</a></li>
-      </ul>
-      <p><a href="https://github.com/avishaigonen123/TelegramBot" target="_blank">GitHub Repository</a></p>
+      <!-- Add More Research Later -->
     </div>
+  </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2 class="section-title">Contact</h2>
+    <p>Email: <a href="mailto:avishaigonen@gmail.com">avishaigonen@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/avishai-gonen-997148289/" target="_blank">Profile</a></p>
+    <p>GitHub: <a href="https://github.com/avishaigonen123" target="_blank">github.com/avishaigonen123</a></p>
+  </section>
 
-        </div>
-      </div>
-    </section>
-
-    
-
-    <section id="contact" class="contact section">
-      <div class="container">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:avishaigonen@gmail.com">avishaigonen@gmail.com</a></p>
-      </div>
-    </section>
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container text-center">
-      <p>&copy; 2025 Avishai Gonen. All Rights Reserved.</p>
-    </div>
+  <footer>
+    <p>© 2025 Avishai Gonen — Cybersecurity Research & CTF</p>
   </footer>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Typed.js Initialization -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var options = {
-        strings: ["Cybersecurity Enthusiast", "Developer", "CTF Competitor"],
-        typeSpeed: 50,  // typing speed
-        backSpeed: 25,  // backspacing speed
-        backDelay: 1000, // time before backspacing
-        loop: true  // make it loop
-      };
-
-      var typed = new Typed(".typed", options);
-    });
-  </script>
 </body>
 
 </html>
