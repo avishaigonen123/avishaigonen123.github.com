@@ -16,5 +16,3 @@ credit: Avishai Gonen
 advisory: https://github.com/t8y2/dbx/security/advisories/GHSA-rqp4-8fxh-22vh
 tags: [auth-bypass, sqli]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

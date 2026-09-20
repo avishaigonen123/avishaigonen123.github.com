@@ -17,5 +17,3 @@ credit: Avishai Gonen
 advisory: https://github.com/GeiserX/genieacs-mcp/security/advisories/GHSA-cmwv-wf9p-p8wx
 tags: [dns-rebinding, mcp, host-header]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

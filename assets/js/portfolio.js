@@ -22,6 +22,11 @@
     var links = document.getElementById("nav-links");
     if (!toggle || !links) return;
 
+    function close() {
+      links.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
     toggle.addEventListener("click", function () {
       var open = links.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", String(open));
@@ -30,11 +35,30 @@
     // Tapping a link should close the panel rather than leave it covering the
     // section the user just jumped to.
     links.addEventListener("click", function (e) {
-      if (e.target.closest("a")) {
-        links.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
+      if (e.target.closest("a")) close();
+    });
+
+    // Escape and outside-click are the conventional ways to dismiss a menu.
+    // Without them a keyboard user had to Shift+Tab back to the toggle.
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && links.classList.contains("is-open")) {
+        close();
+        toggle.focus();
       }
     });
+
+    document.addEventListener("click", function (e) {
+      if (!links.classList.contains("is-open")) return;
+      if (e.target.closest(".nav__inner")) return;
+      close();
+    });
+
+    // Collapsing back to desktop while the panel is open would otherwise leave
+    // a stale aria-expanded="true" on a button that is now hidden.
+    var mq = window.matchMedia("(min-width: 861px)");
+    var onChange = function (e) { if (e.matches) close(); };
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else if (mq.addListener) mq.addListener(onChange);
   }
 
   /* ------------------------------------------------------------------------
@@ -179,11 +203,20 @@
      Bootstrap
      ------------------------------------------------------------------------ */
 
+  // Each initialiser is isolated. The typeof guards below only cover a library
+  // that is MISSING; a library that throws on init would otherwise abort this
+  // function and take the CVE filter down with it.
+  function safely(fn) {
+    try { fn(); } catch (err) {
+      if (window.console && console.warn) console.warn("portfolio:", err);
+    }
+  }
+
   function init() {
-    initNav();
-    initTyped();
-    initCounters();
-    initCveFilter();
+    safely(initNav);
+    safely(initTyped);
+    safely(initCounters);
+    safely(initCveFilter);
   }
 
   if (document.readyState === "loading") {

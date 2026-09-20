@@ -18,5 +18,3 @@ advisory: https://www.vulncheck.com/advisories/dropbox-dash-mcp-server-dns-rebin
 bounty: Intigriti
 tags: [dns-rebinding, mcp, host-header]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

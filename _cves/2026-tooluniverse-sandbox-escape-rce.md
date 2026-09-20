@@ -16,5 +16,3 @@ credit: Avishai Gonen
 advisory: https://www.vulncheck.com/advisories/tooluniverse-through-1.2.6-unauthenticated-remote-code-execution-via-python-code-executor-sandbox-escape
 tags: [rce, sandbox-escape, mcp]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

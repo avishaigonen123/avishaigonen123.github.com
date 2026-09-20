@@ -23,7 +23,12 @@
         <h1 class="hero__name">Avishai Gonen</h1>
 
         <p class="term__cmd"><span class="term__ps1">$</span> cat role.txt</p>
-        <p class="hero__role"><span id="typed-role"></span></p>
+        {%- comment -%}
+          Real text inside the span, not an empty placeholder: if typed.js fails
+          to load or JavaScript is off, the hero would otherwise show the command
+          followed by nothing. Typed overwrites this on init.
+        {%- endcomment -%}
+        <p class="hero__role"><span id="typed-role">Vulnerability Researcher</span></p>
 
         <p class="term__cmd"><span class="term__ps1">$</span> cat focus.txt</p>
         <p class="hero__lede">

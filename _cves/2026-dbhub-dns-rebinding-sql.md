@@ -16,5 +16,3 @@ credit: Avishai Gonen
 advisory: https://github.com/bytebase/dbhub/security/advisories/GHSA-fm8p-53ww-hf6w
 tags: [dns-rebinding, sqli, host-header]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

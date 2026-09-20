@@ -18,5 +18,3 @@ credit: Avishai Gonen
 advisory: https://github.com/zereight/gitlab-mcp/security/advisories/GHSA-2h44-8472-frjj
 tags: [ssrf, mcp]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

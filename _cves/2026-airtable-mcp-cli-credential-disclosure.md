@@ -18,5 +18,3 @@ advisory: https://www.vulncheck.com/advisories/airtable-mcp-cli-before-0.2.5-cre
 bounty: HackerOne
 tags: [credential-disclosure, mcp]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

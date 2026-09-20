@@ -16,5 +16,3 @@ credit: Avishai Gonen
 advisory: https://www.vulncheck.com/advisories/telnyx-mcp-server-through-6.83.0-missing-authentication-on-streamable-http-transport
 tags: [auth-bypass, mcp]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

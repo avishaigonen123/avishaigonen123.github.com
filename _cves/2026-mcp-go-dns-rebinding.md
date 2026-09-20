@@ -17,5 +17,3 @@ credit: Avishai Gonen
 advisory: https://www.vulncheck.com/advisories/mcp-go-before-0.56.0-missing-host-header-validation-enables-dns-rebinding
 tags: [dns-rebinding, mcp, host-header]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

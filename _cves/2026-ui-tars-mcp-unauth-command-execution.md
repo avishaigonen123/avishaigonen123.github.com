@@ -17,5 +17,3 @@ credit: Avishai Gonen
 advisory: https://www.vulncheck.com/advisories/ui-tars-desktop-agent-infra-mcp-servers-bind-every-interface-without-authentication-exposing-arbitrary-command-execution
 tags: [auth-bypass, rce, mcp]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

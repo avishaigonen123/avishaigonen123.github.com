@@ -17,5 +17,3 @@ advisory: https://github.com/datalayer/jupyter-mcp-server/security/advisories/GH
 blog: https://pluto.security/blog/notebook-backdoor-jupyter-mcp-server/
 tags: [auth-bypass, mcp, jupyter]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

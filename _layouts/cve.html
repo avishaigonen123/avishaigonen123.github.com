@@ -9,7 +9,12 @@ layout: default
 {%- endcomment -%}
 {%- assign sev = page.severity | default: "unknown" | downcase -%}
 {%- assign ident = page.cve_id | default: page.ghsa_id | default: page.title -%}
-{%- assign body = content | strip -%}
+{%- comment -%}
+  strip_html before strip: a body containing only an HTML comment is a NON-empty
+  string, so a bare `content | strip` test would treat it as a written narrative
+  and render nothing visible at all.
+{%- endcomment -%}
+{%- assign body = content | strip_html | strip -%}
 
 <article>
   <header class="cve-header">

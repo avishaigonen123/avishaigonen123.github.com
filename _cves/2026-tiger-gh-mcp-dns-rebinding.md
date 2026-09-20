@@ -16,5 +16,3 @@ credit: Avishai Gonen
 advisory: https://www.vulncheck.com/advisories/timescale-tiger-gh-mcp-server-dns-rebinding-via-disabled-host-header-allow-list
 tags: [dns-rebinding, mcp, host-header]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

@@ -21,7 +21,7 @@
       {%- if cve_count > 0 %}
       <div class="metric">
         <div class="metric__value">
-          <span class="purecounter" data-purecounter-end="{{ cve_count }}" data-purecounter-duration="1.2">{{ cve_count }}</span>
+          <span class="purecounter" data-purecounter-end="{{ cve_count }}">{{ cve_count }}</span>
         </div>
         <div class="metric__label">CVEs published</div>
       </div>
@@ -30,7 +30,7 @@
       {%- for m in extra %}
       <div class="metric">
         <div class="metric__value">
-          <span class="purecounter" data-purecounter-end="{{ m.value }}" data-purecounter-duration="1.2">{{ m.value }}</span>{%- if m.suffix != "" and m.suffix %}<span class="suffix">{{ m.suffix }}</span>{% endif %}
+          <span class="purecounter" data-purecounter-end="{{ m.value }}">{{ m.value }}</span>{%- if m.suffix != "" and m.suffix %}<span class="suffix">{{ m.suffix }}</span>{% endif %}
         </div>
         <div class="metric__label">{{ m.label }}</div>
       </div>

@@ -16,5 +16,3 @@ credit: Avishai Gonen
 advisory: https://www.vulncheck.com/advisories/rails-mcp-server-1.4.0-through-1.6.0-os-command-execution-via-execute-ruby-pty-escape
 tags: [command-injection, mcp]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

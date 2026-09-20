@@ -15,15 +15,20 @@
         </div>
 
         <div class="card__stats">
-          <span>{{ pub.venue }}{% if pub.issue %} &middot; {{ pub.issue }}{% endif %}</span>
+          {%- comment -%}
+            `pub.issue` is "" for the blog entries, and "" is truthy in Liquid,
+            which rendered a dangling "&middot; " with nothing after it.
+          {%- endcomment -%}
+          <span>{{ pub.venue }}{% if pub.issue and pub.issue != "" %} &middot; {{ pub.issue }}{% endif %}</span>
           {%- if pub.date and pub.date != "" %}<span>{{ pub.date }}</span>{% endif %}
+          {%- if pub.kind and pub.kind != "" %}<span>{{ pub.kind }}</span>{% endif %}
         </div>
 
-        {%- if pub.desc %}
+        {%- if pub.desc and pub.desc != "" %}
         <p class="card__body">{{ pub.desc }}</p>
         {%- endif %}
 
-        {%- if pub.url %}
+        {%- if pub.url and pub.url != "" %}
         <div class="card__links">
           <a href="{{ pub.url }}" target="_blank" rel="noopener">
             {{ pub.link_text | default: "Read" }}

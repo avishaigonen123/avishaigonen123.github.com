@@ -15,7 +15,7 @@
         </div>
 
         <div class="card__stats">
-          {%- if p.lang %}<span>{{ p.lang }}</span>{% endif -%}
+          {%- if p.lang and p.lang != "" %}<span>{{ p.lang }}</span>{% endif -%}
           {%- if p.stars and p.stars > 0 %}<span><b>{{ p.stars }}</b> stars</span>{% endif -%}
         </div>
 
@@ -31,7 +31,7 @@
           <a href="{{ p.url }}" target="_blank" rel="noopener">
             GitHub <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
           </a>
-          {%- if p.site %}
+          {%- if p.site and p.site != "" %}
           <a href="{{ p.site }}" target="_blank" rel="noopener">
             Live site <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
           </a>

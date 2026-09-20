@@ -18,5 +18,3 @@ credit: Avishai Gonen
 advisory: https://github.com/zereight/gitlab-mcp/security/advisories/GHSA-vmp7-252j-cwp7
 tags: [dns-rebinding, mcp, host-header]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

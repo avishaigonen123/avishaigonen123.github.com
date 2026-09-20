@@ -17,5 +17,3 @@ credit: Avishai Gonen
 advisory: https://github.com/F1bonacc1/process-compose/security/advisories/GHSA-5gm3-9crp-6g3v
 tags: [dns-rebinding, mcp, host-header]
 ---
-
-<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

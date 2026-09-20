@@ -22,9 +22,17 @@ description: >-
   `compact` before `uniq`: `map` yields nil for any document missing the field,
   and uniq keeps one nil, which would render a blank filter chip.
 {%- endcomment -%}
-{%- assign severities = site.cves | map: "severity"  | compact | uniq | sort -%}
-{%- assign years      = site.cves | map: "year"      | compact | uniq | sort | reverse -%}
-{%- assign ecosystems = site.cves | map: "ecosystem" | compact | uniq | sort -%}
+{%- comment -%}
+  `compact` removes only nil, NOT the empty string (an empty string is truthy in
+  Liquid). `where_exp` after it drops any "" that survived, which otherwise
+  renders a blank chip sharing data-value="" with the "All" chip.
+{%- endcomment -%}
+{%- assign severities_raw = site.cves | map: "severity"  | compact | uniq | sort -%}
+{%- assign years_raw      = site.cves | map: "year"      | compact | uniq | sort | reverse -%}
+{%- assign ecosystems_raw = site.cves | map: "ecosystem" | compact | uniq | sort -%}
+{%- assign severities = severities_raw | where_exp: "s", "s != ''" -%}
+{%- assign years      = years_raw      | where_exp: "y", "y != ''" -%}
+{%- assign ecosystems = ecosystems_raw | where_exp: "e", "e != ''" -%}
 
 <section class="section">
   <div class="wrap">
@@ -49,14 +57,15 @@ description: >-
 
     <p class="section__lede">
       {{ total }} published {% if total == 1 %}disclosure{% else %}disclosures{% endif %},
-      disclosed through GitHub Security Advisories. Filter by severity, year or
-      ecosystem, or search the text.
+      disclosed through GitHub Security Advisories. Every entry links to its
+      advisory and fix; technical writeups are added as each disclosure clears.
+      Filter by severity, year or ecosystem, or search the text.
     </p>
 
     <div class="filters">
       <div class="filter-group">
-        <span class="filter-group__label">Severity</span>
-        <div class="chips" id="filter-severity">
+        <span class="filter-group__label" id="filter-severity-label">Severity</span>
+        <div class="chips" role="group" aria-labelledby="filter-severity-label">
           <button class="chip" type="button" data-filter="severity" data-value="" aria-pressed="true">All</button>
           {%- for s in severities %}
           <button class="chip" type="button" data-filter="severity" data-value="{{ s | downcase }}" aria-pressed="false">{{ s }}</button>
@@ -66,8 +75,8 @@ description: >-
 
       {%- if years.size > 0 %}
       <div class="filter-group">
-        <span class="filter-group__label">Year</span>
-        <div class="chips" id="filter-year">
+        <span class="filter-group__label" id="filter-year-label">Year</span>
+        <div class="chips" role="group" aria-labelledby="filter-year-label">
           <button class="chip" type="button" data-filter="year" data-value="" aria-pressed="true">All</button>
           {%- for y in years %}
           <button class="chip" type="button" data-filter="year" data-value="{{ y }}" aria-pressed="false">{{ y }}</button>
@@ -78,8 +87,8 @@ description: >-
 
       {%- if ecosystems.size > 0 %}
       <div class="filter-group">
-        <span class="filter-group__label">Ecosystem</span>
-        <div class="chips" id="filter-ecosystem">
+        <span class="filter-group__label" id="filter-ecosystem-label">Ecosystem</span>
+        <div class="chips" role="group" aria-labelledby="filter-ecosystem-label">
           <button class="chip" type="button" data-filter="ecosystem" data-value="" aria-pressed="true">All</button>
           {%- for e in ecosystems %}
           <button class="chip" type="button" data-filter="ecosystem" data-value="{{ e | downcase }}" aria-pressed="false">{{ e }}</button>
@@ -100,6 +109,12 @@ description: >-
       so with JavaScript disabled every CVE is still listed and reachable -
       filtering degrades to "no filtering", never to "no content".
     {%- endcomment -%}
+    {%- comment -%}
+      A visually hidden h2 keeps the heading order h1 -> h2 -> h3 for screen
+      readers; the card titles below are h3.
+    {%- endcomment -%}
+    <h2 class="visually-hidden">Published advisories</h2>
+
     <div class="cve-grid" id="cve-grid">
       {%- for cve in sorted %}
         {%- include cve-card.html cve=cve %}
