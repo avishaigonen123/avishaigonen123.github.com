@@ -1,4 +1,4 @@
-# Taken from Avishai's LinkedIn profile.
+# From Avishai's LinkedIn. Kept deliberately short - three lines, not six.
 
 - title: Security Researcher
   company: Pluto Security
@@ -7,9 +7,6 @@
   start: May 2026
   end: Sep 2026
   points:
-    - "Disclosed 24 CVEs in open-source AI and agent infrastructure, each published through a vendor or GitHub Security Advisory with public credit."
-    - "Specialised in the security of Model Context Protocol (MCP) servers: DNS rebinding against local transports, authentication that fails open, and sandbox escapes leading to remote code execution."
-    - "Reported vulnerabilities through HackerOne, YesWeHack and Intigriti, including two that were awarded bug bounties."
-    - "Published technical analysis of the jupyter-mcp-server attack chain and the CircleCI MCP server filename attack on the Pluto Security research blog."
+    - "Disclosed 24 CVEs in open-source AI and agent infrastructure, published through vendor and GitHub Security Advisories with public credit."
+    - "Focused on Model Context Protocol servers: DNS rebinding against local transports, authentication that fails open, and sandbox escapes leading to remote code execution."
     - "Built MCP Binder, an open-source lab for reproducing MCP DNS rebinding attacks end to end."
-    - "Additional disclosures pending publication."

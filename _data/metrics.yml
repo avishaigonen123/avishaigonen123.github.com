@@ -1,18 +1,21 @@
-# Only numbers that are NOT derivable from this repo live here.
+# Numbers shown in the hero strip. The CVE count is NOT here: it is computed in
+# section-metrics.html as `site.cves | size`, so it can never disagree with the
+# CVE list.
 #
-# The CVE count is deliberately absent: it is computed in section-metrics.html
-# as `site.cves | size`, so it can never disagree with the CVE list.
-#
-# CONFIRM: 700 is derived from the CTF_writeups repo (~710 markdown files
-# carrying frontmatter, minus index pages), not supplied. Delete or correct it.
+# `url` makes the whole tile a link. A value starting with "#" is treated as an
+# in-page anchor and left as-is; anything else goes through relative_url.
+# `prefix` renders before the number, `suffix` after it.
 
 - label: CTF writeups published
-  value: 700
-  suffix: "+"
+  value: 692
+  prefix: ""
+  suffix: ""
+  url: https://avishaigonen123.github.io/CTF_writeups/
   icon: bi-journal-code
 
-# Add once you have the figures, e.g.:
-# - label: Bug bounty reports resolved
-#   value: 0
-#   suffix: ""
-#   icon: bi-shield-check
+- label: Earned in bug bounties
+  value: 5000
+  prefix: "$"
+  suffix: "+"
+  url: "#bounty"
+  icon: bi-trophy

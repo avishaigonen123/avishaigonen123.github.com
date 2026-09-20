@@ -1,7 +1,14 @@
 {%- comment -%}
-  The CVE count is derived from the collection, never hardcoded. It is omitted
+  The CVE count is derived from the collection, never hardcoded, and is omitted
   entirely while the collection is empty rather than rendering a conspicuous
   "0 CVEs" on a portfolio whose whole point is that there are some.
+
+  Each tile is a link when a url is supplied. A url starting with "#" is an
+  in-page anchor and is left alone; anything else goes through relative_url.
+
+  The real number is the counter's initial text content, not 0. PureCounter
+  overwrites it when it initialises, so JS-on users still get the count-up while
+  a JS-off or failed-to-load user sees the true figure.
 {%- endcomment -%}
 {%- assign cve_count = site.cves | size -%}
 {%- assign extra = site.data.metrics -%}
@@ -12,28 +19,39 @@
   <div class="wrap">
     <div class="metrics">
 
-      {%- comment -%}
-        The real value is the span's initial text content, not 0. PureCounter
-        overwrites it when it initialises, so JS-on users still get the count-up
-        animation - but a JS-off or failed-to-load user sees the true figure
-        rather than a string of zeroes.
-      {%- endcomment -%}
       {%- if cve_count > 0 %}
-      <div class="metric">
+      <a class="metric" href="{{ '/vulnerabilities/' | relative_url }}">
         <div class="metric__value">
           <span class="purecounter" data-purecounter-end="{{ cve_count }}">{{ cve_count }}</span>
         </div>
         <div class="metric__label">CVEs published</div>
-      </div>
+      </a>
       {%- endif %}
 
       {%- for m in extra %}
+      {%- assign has_url = false -%}
+      {%- if m.url and m.url != "" %}{% assign has_url = true %}{% endif -%}
+      {%- if has_url -%}
+        {%- if m.url contains "#" -%}
+          {%- assign m_url = m.url -%}
+        {%- else -%}
+          {%- assign m_url = m.url | relative_url -%}
+        {%- endif -%}
+      <a class="metric" href="{{ m_url }}">
+      {%- else %}
       <div class="metric">
+      {%- endif %}
         <div class="metric__value">
-          <span class="purecounter" data-purecounter-end="{{ m.value }}">{{ m.value }}</span>{%- if m.suffix != "" and m.suffix %}<span class="suffix">{{ m.suffix }}</span>{% endif %}
+          {%- if m.prefix and m.prefix != "" %}<span class="prefix">{{ m.prefix }}</span>{% endif -%}
+          <span class="purecounter" data-purecounter-end="{{ m.value }}">{{ m.value }}</span>
+          {%- if m.suffix and m.suffix != "" %}<span class="suffix">{{ m.suffix }}</span>{% endif -%}
         </div>
         <div class="metric__label">{{ m.label }}</div>
+      {%- if has_url %}
+      </a>
+      {%- else %}
       </div>
+      {%- endif %}
       {%- endfor %}
 
     </div>

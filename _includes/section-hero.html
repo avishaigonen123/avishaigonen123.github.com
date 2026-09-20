@@ -1,12 +1,3 @@
-{%- comment -%}
-  The headline CVE figure never overstates and never goes stale: it shows the
-  collection size once that exceeds the 14 already disclosed, and otherwise his
-  stated total. Counting the collection alone would understate the record while
-  entries are still being added; hardcoding would freeze it.
-{%- endcomment -%}
-{%- assign cve_claim = site.cves | size -%}
-{%- if cve_claim < 14 %}{% assign cve_claim = "14+" %}{% endif -%}
-
 <section id="hero" class="section hero">
   <div class="wrap">
 
@@ -28,19 +19,15 @@
           to load or JavaScript is off, the hero would otherwise show the command
           followed by nothing. Typed overwrites this on init.
         {%- endcomment -%}
-        <p class="hero__role"><span id="typed-role">Vulnerability Researcher</span></p>
+        <p class="hero__role"><span id="typed-role">Security enthusiast</span></p>
 
         <p class="term__cmd"><span class="term__ps1">$</span> cat focus.txt</p>
         <p class="hero__lede">
-          I look for the holes in software that people and AI agents both trust,
-          get them fixed, and publish what was wrong. Most of that work lately is
-          in MCP servers, where a missing Host header check is enough to hand over
-          a developer's machine.
-        </p>
-
-        <p class="term__cmd">
-          <span class="term__ps1">$</span> ls ~/cves | wc -l
-          <span class="term__count">{{ cve_claim }}</span>
+          Security is what I do for fun. It started with CTFs in high school and
+          never really wore off: I still spend my evenings on challenge boxes,
+          bug bounty and reading source until something looks off. Sometimes that
+          turns into a CVE. Most of the time it just makes me harder to fool, and
+          I write all of it down either way.
         </p>
       </div>
     </div>

@@ -4,37 +4,42 @@
     <h2 class="section__title">About</h2>
 
     <div class="about">
+      {%- comment -%}
+        Served locally rather than from LinkedIn: that URL is signed and carries
+        an expiry, so hotlinking it would break silently within weeks.
+      {%- endcomment -%}
       <img class="about__photo"
-           src="{{ '/assets/img/my-profile-img.jpg' | relative_url }}"
+           src="{{ '/assets/img/profile.jpg' | relative_url }}"
            alt="Portrait of Avishai Gonen"
-           width="640" height="640" loading="lazy">
+           width="800" height="800" loading="lazy">
 
       <div class="about__body">
         <p>
-          I'm a security researcher focused on <strong>vulnerability research and
-          disclosure</strong> - finding exploitable bugs in real products, getting them
-          fixed, and writing up how they worked. Disclosed through GitHub Security
-          Advisories.
+          I'm a security researcher who spends most of my time on the
+          <strong>web</strong>: application and API security, authentication
+          logic, and the request-handling code that sits in front of everything
+          else. Lately that has meant the servers AI agents talk to, where the
+          same old assumptions keep showing up in new places.
         </p>
         <p>
-          I came to this through competition: several hundred CTF challenges across
-          boot2root machines, web exploitation, binary exploitation, crypto and
-          reverse engineering. That habit of documenting every solution is why the
-          writeup archive is as large as it is.
+          What I enjoy is the moment you read how something was built and spot the
+          assumption that does not hold. Most of my published work started there,
+          and the CVEs on this site are what happened when the assumption turned
+          out to matter.
         </p>
         <p>
-          I also like pulling things apart at a lower level - Android application
-          security, mobile instrumentation with Frida, and side-channel work on
-          embedded hardware.
+          I got here through competition rather than a classroom. Several hundred
+          CTF challenges across web exploitation, boot2root machines and crypto
+          taught me more than any course did, and writing every solution down is
+          why the writeup archive is as large as it is.
         </p>
 
         <ul class="focus">
           <li>Web &amp; API exploitation</li>
-          <li>Vulnerability disclosure</li>
-          <li>Android application security</li>
-          <li>Reverse engineering</li>
-          <li>Side channels</li>
+          <li>Bug bounty</li>
           <li>CTF</li>
+          <li>AI &amp; MCP tooling security</li>
+          <li>Android application security</li>
         </ul>
       </div>
     </div>

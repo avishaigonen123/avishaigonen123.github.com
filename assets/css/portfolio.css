@@ -292,8 +292,21 @@ p { margin: 0 0 1.1em; }
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 30px;
+}
+
+/* Louder than the generic .btn: these are the two things a visitor should act on. */
+.hero__actions .btn {
+  padding: 17px 34px;
+  font-size: 15.5px;
+  border-radius: 10px;
+}
+.hero__actions .btn i { font-size: 1.15em; }
+
+@media (max-width: 520px) {
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { justify-content: center; }
 }
 
 .hero__social {
@@ -443,6 +456,18 @@ p { margin: 0 0 1.1em; }
 /* --accent, not --accent-dim: the dim green is 3.35:1 and the suffix renders at
    normal text size once the clamp floors on narrow viewports, where 4.5:1 is needed. */
 .metric__value .suffix { font-size: 0.62em; color: var(--accent); }
+.metric__value .prefix { font-size: 0.72em; color: var(--accent); }
+
+/* Tiles that link somewhere - the whole tile is the hit area. */
+a.metric {
+  display: block;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.18s var(--ease);
+}
+a.metric:hover { background: var(--surface-2); color: inherit; }
+a.metric:hover .metric__label { color: var(--accent); }
+a.metric:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .metric__label {
   font-family: var(--mono);
   font-size: 12px;
