@@ -6,10 +6,10 @@
 # in-page anchor and left as-is; anything else goes through relative_url.
 # `prefix` renders before the number, `suffix` after it.
 #
-# 661 is not an estimate. The CTF site's own counter reports it, and the two
+# 665 is not an estimate. The CTF site's own counter reports it, and the two
 # must agree. It counts every page under a known platform directory, excluding
 # each platform's own hub index and excluding anything marked `status:
-# incomplete`: 687 pages exist, 26 are incomplete.
+# incomplete`.
 #
 # The counter previously said 579. It listed only 12 of the 15 platforms,
 # omitted websec.il entirely, and skipped every writeup stored as
@@ -17,7 +17,7 @@
 # sub-wargames are organised.
 
 - label: CTF writeups published
-  value: 661
+  value: 665
   prefix: ""
   suffix: ""
   url: https://avishaigonen123.github.io/CTF_writeups/
