@@ -1,0 +1,42 @@
+{%- comment -%}
+  The CVE count is derived from the collection, never hardcoded. It is omitted
+  entirely while the collection is empty rather than rendering a conspicuous
+  "0 CVEs" on a portfolio whose whole point is that there are some.
+{%- endcomment -%}
+{%- assign cve_count = site.cves | size -%}
+{%- assign extra = site.data.metrics -%}
+{%- assign extra_count = extra | size -%}
+
+{%- if cve_count > 0 or extra_count > 0 %}
+<section class="section" aria-label="At a glance">
+  <div class="wrap">
+    <div class="metrics">
+
+      {%- comment -%}
+        The real value is the span's initial text content, not 0. PureCounter
+        overwrites it when it initialises, so JS-on users still get the count-up
+        animation — but a JS-off or failed-to-load user sees the true figure
+        rather than a string of zeroes.
+      {%- endcomment -%}
+      {%- if cve_count > 0 %}
+      <div class="metric">
+        <div class="metric__value">
+          <span class="purecounter" data-purecounter-end="{{ cve_count }}" data-purecounter-duration="1.2">{{ cve_count }}</span>
+        </div>
+        <div class="metric__label">CVEs published</div>
+      </div>
+      {%- endif %}
+
+      {%- for m in extra %}
+      <div class="metric">
+        <div class="metric__value">
+          <span class="purecounter" data-purecounter-end="{{ m.value }}" data-purecounter-duration="1.2">{{ m.value }}</span>{%- if m.suffix != "" and m.suffix %}<span class="suffix">{{ m.suffix }}</span>{% endif %}
+        </div>
+        <div class="metric__label">{{ m.label }}</div>
+      </div>
+      {%- endfor %}
+
+    </div>
+  </div>
+</section>
+{%- endif %}

@@ -1,0 +1,39 @@
+{%- assign pubs = site.data.publications -%}
+
+{%- if pubs and pubs.size > 0 %}
+<section id="publications" class="section">
+  <div class="wrap">
+    <p class="section__label">cat publications.bib</p>
+    <h2 class="section__title">Publications</h2>
+
+    <div class="card-grid">
+      {%- for pub in pubs %}
+      <div class="card">
+        <div class="card__head">
+          <i class="bi {{ pub.icon | default: 'bi-file-earmark-text' }} card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">{{ pub.title }}</h3>
+        </div>
+
+        <div class="card__stats">
+          <span>{{ pub.venue }}{% if pub.issue %} &middot; {{ pub.issue }}{% endif %}</span>
+          {%- if pub.date and pub.date != "" %}<span>{{ pub.date }}</span>{% endif %}
+        </div>
+
+        {%- if pub.desc %}
+        <p class="card__body">{{ pub.desc }}</p>
+        {%- endif %}
+
+        {%- if pub.url %}
+        <div class="card__links">
+          <a href="{{ pub.url }}" target="_blank" rel="noopener">
+            {{ pub.link_text | default: "Read" }}
+            <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}

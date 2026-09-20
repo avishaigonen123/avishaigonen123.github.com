@@ -1,0 +1,56 @@
+{%- comment -%}
+  Landing-page view: the most recent CVEs, newest first.
+
+  Sorting is explicit in Liquid because the `sort_by` collection option needs
+  Jekyll 4.0 and Pages runs 3.10. ISO dates (quoted in frontmatter, so YAML keeps
+  them strings rather than Date objects) sort correctly lexically — mixing the
+  two types raises Liquid::ArgumentError and fails the build.
+
+  `compact` before `uniq` matters: `map` yields nil for any CVE missing the
+  field, and uniq would preserve one nil, producing a blank filter chip.
+{%- endcomment -%}
+{%- assign sorted = site.cves | sort: "disclosed" | reverse -%}
+{%- assign total = site.cves | size -%}
+{%- assign shown = sorted | slice: 0, 6 -%}
+
+<section id="vulnerabilities" class="section">
+  <div class="wrap">
+    <p class="section__label">ls -la ./cves</p>
+    <h2 class="section__title">Vulnerability Research</h2>
+
+    {%- if total == 0 %}
+    <p class="section__lede">
+      CVE writeups are being added. Each one gets a full technical page covering
+      root cause, exploitation, impact and remediation, linked to the published
+      advisory.
+    </p>
+    <div class="empty-state">
+      <p>No CVEs published on this page yet.</p>
+      <p>
+        Entries live in <code>_cves/</code> — one file per CVE. Adding one creates
+        the card, the detail page and the counter automatically.
+      </p>
+    </div>
+    {%- else %}
+    <p class="section__lede">
+      {{ total }} published {% if total == 1 %}CVE{% else %}CVEs{% endif %}, disclosed
+      through GitHub Security Advisories. Each entry documents the root cause,
+      exploitation path and fix.
+    </p>
+
+    <div class="cve-grid">
+      {%- for cve in shown %}
+        {%- include cve-card.html cve=cve %}
+      {%- endfor %}
+    </div>
+
+    {%- if total > 6 %}
+    <div class="link-row">
+      <a href="{{ '/vulnerabilities/' | relative_url }}">
+        View all {{ total }} CVEs <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+    {%- endif %}
+    {%- endif %}
+  </div>
+</section>

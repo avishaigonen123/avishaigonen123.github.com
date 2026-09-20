@@ -1,0 +1,78 @@
+title: Avishai Gonen
+# tagline is what jekyll-seo-tag appends to <title> on the home page. Without it
+# it falls back to `description`, which is a full sentence and makes for an
+# unusable browser tab.
+tagline: Security Researcher
+description: >-
+  Security researcher — vulnerability research, CVE disclosures, bug bounty
+  and CTF writeups.
+author: Avishai Gonen
+
+# This is the GitHub Pages *user* site: served from the domain root, so baseurl
+# must stay empty. jekyll-seo-tag emits <title>, the canonical link and og:url
+# only when url/title are present — without them the head silently degrades.
+url: "https://avishaigonen123.github.io"
+baseurl: ""
+
+# `exclude` REPLACES Jekyll's default list wholesale (arrays are overwritten,
+# not merged), so the defaults are re-stated here. Omitting them would publish
+# Gemfile / Gemfile.lock and start Jekyll walking node_modules.
+#
+# CTF_writeups is listed with AND without a trailing slash: the no-slash form is
+# what actually matches the directory entry, and the slash form is harmless
+# insurance against matcher differences between Jekyll versions. This directory
+# is a 1.5 GB nested git repo; without this a local build tries to ingest it.
+#
+# README.md is deliberately NOT excluded. jekyll-readme-index only promotes a
+# README when the directory has no index; the root index.html matches its
+# INDEX_REGEX (^/(?:$|index\.html$)), so it is already a no-op. Excluding
+# README.md would 404 /README.md, which must keep returning 200.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - CTF_writeups
+  - CTF_writeups/
+
+# jekyll-optional-front-matter is enabled by default on Pages and rewrites any
+# .md file lacking frontmatter into a rendered page. Left on, README.md would
+# additionally render as /README.html — duplicate content in the sitemap. Off,
+# README.md stays a plain StaticFile and /README.md returns 200 as markdown,
+# exactly as it does today. (Do NOT use `require_front_matter` instead: that
+# also sets remove_originals and would delete README.md.)
+optional_front_matter:
+  enabled: false
+
+collections:
+  cves:
+    output: true
+    # Documented collection-level permalink. `:name` is the *slugified* basename,
+    # so filenames must not repeat the CVE prefix or URLs come out doubled
+    # (`CVE-2024-1234.md` -> /cve/cve-2024-1234/). Files are named by
+    # vendor/product instead, with the CVE id carried in frontmatter.
+    permalink: /cve/:name/
+    # There is deliberately no `sort_by` here: it was added in Jekyll 4.0 and
+    # Pages runs 3.10.0, so it would be silently ignored and CVE order
+    # undefined. Ordering is done explicitly in Liquid instead.
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  auto_ids: true
+  hard_wrap: false
+
+# There is deliberately no `defaults:` block. Each CVE file carries
+# `layout: cve` explicitly, which also guards against jekyll-default-layout,
+# which would otherwise assign `default` to collection docs (its auto-match is
+# the singular collection label, and ours is plural). For the same reason do NOT
+# create `_layouts/home.html` or `_layouts/page.html`: jekyll-default-layout
+# claims those names for the root page and every other page respectively.

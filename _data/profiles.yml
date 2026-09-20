@@ -1,0 +1,28 @@
+# Handles and profile URLs are from Avishai directly. Stats are omitted rather
+# than estimated — add them under `stats` as [label, value] pairs and they will
+# render; leaving the list empty renders just the platform and handle.
+
+- platform: HackerOne
+  handle: avishaigonen
+  url: https://hackerone.com/avishaigonen
+  icon: bi-shield-check
+  stats: []
+  desc: >-
+    Web application and MCP server vulnerabilities, reported through the
+    platform's disclosure programme.
+
+- platform: YesWeHack
+  handle: avishaigonen
+  url: https://yeswehack.com/hunters/avishaigonen
+  icon: bi-shield-shaded
+  stats: []
+  desc: >-
+    Bug bounty hunting across public and private programmes.
+
+- platform: Intigriti
+  handle: avishaigonen_pluto
+  url: https://app.intigriti.com/profile/avishaigonen_pluto
+  icon: bi-shield-lock
+  stats: []
+  desc: >-
+    Vulnerability research performed through Pluto Security.

@@ -1,0 +1,40 @@
+{%- assign jobs = site.data.experience -%}
+
+{%- if jobs and jobs.size > 0 %}
+<section id="experience" class="section">
+  <div class="wrap">
+    <p class="section__label">cat experience.log</p>
+    <h2 class="section__title">Experience</h2>
+
+    <div class="timeline">
+      {%- for job in jobs %}
+      <div class="job">
+        <div class="job__head">
+          <h3 class="job__title">
+            {%- if job.url and job.url != "" -%}
+              <a href="{{ job.url }}" target="_blank" rel="noopener">{{ job.title }}</a>
+            {%- else -%}
+              {{ job.title }}
+            {%- endif -%}
+          </h3>
+          <span class="job__co">{{ job.company }}</span>
+        </div>
+
+        <p class="job__meta">
+          {%- if job.start %}{{ job.start }} – {{ job.end | default: "Present" }}{% endif -%}
+          {%- if job.location and job.location != "" %} &middot; {{ job.location }}{% endif -%}
+        </p>
+
+        {%- if job.points.size > 0 %}
+        <ul class="job__points">
+          {%- for pt in job.points %}
+          <li>{{ pt }}</li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}

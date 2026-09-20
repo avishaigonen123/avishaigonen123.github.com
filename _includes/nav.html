@@ -1,0 +1,33 @@
+{%- comment -%}
+  Anchors are root-absolute on purpose. The id-based sections only exist on the
+  home page; a bare `#about` would silently do nothing on /vulnerabilities/,
+  /cve/<id>/ and /PoC/. `'/' | relative_url` resolves to `/` because baseurl is
+  empty, so these work from every page.
+{%- endcomment -%}
+<nav class="nav" aria-label="Main">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="{{ '/' | relative_url }}">
+      avishai<span>@</span>research<span>:~$</span>
+    </a>
+
+    <button class="nav__toggle" type="button"
+            aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <i class="bi bi-list" aria-hidden="true"></i>
+    </button>
+
+    <ul class="nav__links" id="nav-links">
+      <li><a href="{{ '/' | relative_url }}#about">About</a></li>
+      <li><a href="{{ '/' | relative_url }}#experience">Experience</a></li>
+      <li><a href="{{ '/vulnerabilities/' | relative_url }}">CVEs</a></li>
+      <li><a href="{{ '/' | relative_url }}#bounty">Bug Bounty</a></li>
+      <li><a href="{{ '/' | relative_url }}#projects">Projects</a></li>
+      <li><a href="{{ '/' | relative_url }}#research">Research</a></li>
+      <li><a href="{{ '/' | relative_url }}#contact">Contact</a></li>
+      <li>
+        <a href="https://avishaigonen123.github.io/CTF_writeups/" target="_blank" rel="noopener">
+          CTF Writeups <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,11 @@
+- title: GraphQL Injection
+  venue: DigitalWhisper Magazine
+  issue: DW177
+  date: ""
+  icon: bi-file-earmark-text
+  desc: >-
+    Analysis of GraphQL injection vectors — how introspection and resolver
+    mishandling create exploitable paths, the attack chains that follow, and the
+    real-world weaknesses behind them.
+  url: https://digitalwhisper.co.il/files/Zines/0xB1/DW177-2-GraphQLInjection.pdf
+  link_text: Read the research (PDF)

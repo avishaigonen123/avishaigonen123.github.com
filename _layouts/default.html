@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {%- include head.html -%}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {%- include nav.html -%}
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  {%- include footer.html -%}
+
+  {%- comment -%}
+    Only three scripts, all deferred. `defer` preserves document order, so the
+    two vendored libraries define their globals before portfolio.js runs.
+
+    Deliberately NOT loaded: isotope + imagesloaded (its filter is single
+    dimension, and it position:absolute's its items, which fights the CSS grid
+    the CVE cards use), AOS (no element carries a data-aos attribute), glightbox
+    and swiper (nothing uses them), bootstrap JS (no Bootstrap components), and
+    php-email-form (needs a PHP backend, which Pages does not run).
+  {%- endcomment -%}
+  <script src="{{ '/assets/vendor/typed.js/typed.umd.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/vendor/purecounter/purecounter_vanilla.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/portfolio.js' | relative_url }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{%- comment -%}
+  The legacy /PoC/* pages are kept published at their original paths so any link
+  already shared still resolves. This section gives them a labelled home and an
+  explicit statement of what they are, instead of leaving a bare exfiltration
+  payload sitting at the site root with no context.
+{%- endcomment -%}
+<section id="research" class="section">
+  <div class="wrap">
+    <p class="section__label">ls -la ./research</p>
+    <h2 class="section__title">Research &amp; Proofs of Concept</h2>
+
+    <div class="notice">
+      <p>
+        <strong>Authorized-disclosure demonstrations only.</strong> Everything below
+        was produced against systems I own or had explicit permission to test. These
+        pages demonstrate that a reported issue was real and reproducible — they
+        contain no live payloads targeting third parties, and the affected vendors
+        were notified and given time to remediate before any of it was published.
+      </p>
+      <p>
+        Several files here are intentionally minimal payloads (a redirect, a
+        JavaScript snippet) kept as evidence for the written reports they belong to.
+      </p>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card__head">
+          <i class="bi bi-globe2 card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">Open redirect / host-header PoC</h3>
+        </div>
+        <p class="card__body">
+          Demonstrated that an unvalidated hostname in a redirect parameter allowed
+          an attacker-controlled destination. Page intentionally lands on a
+          recognisable dead end to make the redirection obvious.
+        </p>
+        <div class="card__links">
+          <a href="{{ '/PoC.html' | relative_url }}">View PoC <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <i class="bi bi-envelope-exclamation card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">Phishing-awareness demonstrations</h3>
+        </div>
+        <p class="card__body">
+          Two landing pages built to show how convincing a crafted link can look.
+          Written up in Hebrew, both are harmless and say so on the page — the point
+          was the capture in Burp Suite, not the destination.
+        </p>
+        <div class="card__links">
+          <a href="{{ '/PoC/' | relative_url }}">View all <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <i class="bi bi-search-heart card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">Discovery methodology</h3>
+        </div>
+        <p class="card__body">
+          How I approach an unfamiliar target: mapping the attack surface, reading
+          the JavaScript for hidden endpoints, and turning a suspicious parameter
+          into a reproducible proof of impact before reporting it.
+        </p>
+        <div class="card__links">
+          <a href="{{ '/' | relative_url }}#contact">Get in touch <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

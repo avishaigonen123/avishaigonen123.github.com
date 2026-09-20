@@ -1,0 +1,59 @@
+# Project descriptions are taken verbatim (or lightly trimmed) from the repos'
+# own GitHub descriptions, so nothing here overstates the work.
+
+- name: Time Side-Channel Attack
+  url: https://github.com/avishaigonen123/Time-side-channel-attack
+  lang: C++
+  icon: bi-stopwatch
+  desc: >-
+    Academic project implementing time side-channel attacks: password-verification
+    timing, defeating artificial random delays with statistics, and ECDSA key
+    extraction. Runs against ESP32 and Arduino hardware, with a written report.
+  tags: [side-channel, crypto, embedded]
+
+- name: WordPress Vulnerability Lab
+  url: https://github.com/avishaigonen123/WordPress-vuln-lab
+  lang: Python
+  icon: bi-box-seam
+  desc: >-
+    A Docker-based lab for standing up WordPress with arbitrary plugin sets and
+    versions, so vulnerability research can be reproduced locally against a
+    target you control.
+  tags: [lab, docker, web]
+
+- name: CTF Writeups
+  url: https://github.com/avishaigonen123/CTF_writeups
+  site: https://avishaigonen123.github.io/CTF_writeups/
+  lang: Jekyll
+  stars: 2
+  icon: bi-journal-code
+  desc: >-
+    Writeups across HackTheBox, TryHackMe, OverTheWire, root-me, webhacking.kr,
+    pwnable.kr and more, published as a Jekyll site with its own search.
+  tags: [ctf, writeups, jekyll]
+
+- name: Mossad CTF
+  url: https://github.com/avishaigonen123/Mossad_CTF
+  lang: HTML
+  icon: bi-flag
+  desc: >-
+    A CTF challenge authored during the third year of my BSc, covering network
+    security and exploitation.
+  tags: [ctf, authoring]
+
+- name: Telegram News Bot
+  url: https://github.com/avishaigonen123/TelegramBot
+  lang: Python
+  stars: 1
+  icon: bi-robot
+  desc: Telegram bot that translates and forwards messages between channels.
+  tags: [python, automation]
+
+- name: Talmud Bavli Navigator
+  url: https://github.com/avishaigonen123/Talmud-Bavli-Navigator
+  lang: JavaScript
+  icon: bi-book
+  desc: >-
+    Chrome extension for opening Talmud Bavli pages quickly — built for personal
+    use during yeshiva.
+  tags: [extension, javascript]

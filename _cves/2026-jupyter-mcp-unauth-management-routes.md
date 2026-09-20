@@ -1,0 +1,21 @@
+---
+layout: cve
+cve_id: CVE-2026-77318
+ghsa_id: GHSA-24pw-rf5p-mgp7
+title: Unauthenticated management routes can hijack the Jupyter backend
+description: In standalone HTTP mode the management routes require no authentication, allowing an attacker to reconfigure and take over the Jupyter backend the MCP server controls.
+vendor: datalayer
+package: jupyter-mcp-server
+ecosystem: pip
+severity: high
+cwe: [CWE-306]
+disclosed: "2026-07-11"
+year: 2026
+affected: <= 1.0.2
+credit: Avishai Gonen
+advisory: https://github.com/datalayer/jupyter-mcp-server/security/advisories/GHSA-24pw-rf5p-mgp7
+blog: https://pluto.security/blog/notebook-backdoor-jupyter-mcp-server/
+tags: [auth-bypass, mcp, jupyter]
+---
+
+<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

@@ -1,0 +1,120 @@
+---
+layout: default
+title: PoC Demonstrations
+description: >-
+  Authorized-disclosure proof-of-concept demonstrations. Screenshots and minimal
+  payloads kept as evidence for the reports they belong to.
+---
+
+{%- comment -%}
+  An index page is all that is needed for this URL: Jekyll gives any file named
+  index.html the URL of its directory, so this resolves to /PoC/ with no
+  permalink. It previously 404'd, because the directory existed with no index.
+
+  The individual files (cybercyber.html, ranBarZik.html, burp*.png) are
+  untouched and stay at their original paths, so anything already shared still
+  resolves.
+{%- endcomment -%}
+
+<section class="section">
+  <div class="wrap">
+    <p class="section__label">ls -la ./PoC</p>
+    <h1 class="section__title">PoC Demonstrations</h1>
+
+    <div class="notice">
+      <p>
+        <strong>Authorized-disclosure demonstrations only.</strong> These were
+        produced against systems I own or had explicit permission to test, kept as
+        evidence that a reported issue was real and reproducible. The affected
+        vendors were notified and given time to remediate before publication.
+      </p>
+      <p>
+        Nothing here targets a third party, and nothing here collects or transmits
+        data. The phishing pages say so on the page itself — the point of each was
+        the request captured in Burp Suite, not the destination.
+      </p>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card__head">
+          <i class="bi bi-globe2 card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">Open redirect / host-header manipulation</h3>
+        </div>
+        <p class="card__body">
+          An unvalidated hostname in a redirect parameter let an attacker choose
+          the destination. The landing page is deliberately an obvious dead end so
+          the redirection is unmistakable.
+        </p>
+        <div class="card__links">
+          <a href="{{ '/PoC.html' | relative_url }}">
+            PoC.html <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <i class="bi bi-envelope-exclamation card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">Phishing-awareness demonstration — "CyberCyber"</h3>
+        </div>
+        <p class="card__body">
+          A crafted link convincing enough to be clicked, written up in Hebrew.
+          Harmless by construction: the page states outright that it is a demo and
+          that nothing was accessed.
+        </p>
+        <div class="card__links">
+          <a href="{{ '/PoC/cybercyber.html' | relative_url }}">
+            cybercyber.html <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <i class="bi bi-envelope-exclamation card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">Phishing-awareness demonstration — "Ran"</h3>
+        </div>
+        <p class="card__body">
+          The same technique aimed at a specific recipient, used to make a point
+          about link trust rather than to collect anything.
+        </p>
+        <div class="card__links">
+          <a href="{{ '/PoC/ranBarZik.html' | relative_url }}">
+            ranBarZik.html <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <i class="bi bi-image card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">Burp Suite captures</h3>
+        </div>
+        <p class="card__body">
+          The raw request/response evidence behind the two reports above, showing
+          exactly what was sent and what came back.
+        </p>
+        <div class="card__links">
+          <a href="{{ '/PoC/burp.png' | relative_url }}" target="_blank" rel="noopener">
+            burp.png <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a href="{{ '/PoC/burp_cybercyber.png' | relative_url }}" target="_blank" rel="noopener">
+            burp_cybercyber.png <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="link-row">
+      <a href="{{ '/' | relative_url }}#research">
+        <i class="bi bi-arrow-left" aria-hidden="true"></i> Back to Research
+      </a>
+      <a href="{{ '/' | relative_url }}#contact">
+        Report a concern <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>

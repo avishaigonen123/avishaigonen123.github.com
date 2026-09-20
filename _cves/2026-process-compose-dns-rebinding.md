@@ -1,0 +1,21 @@
+---
+layout: cve
+cve_id: CVE-2026-77339
+ghsa_id: GHSA-5gm3-9crp-6g3v
+title: "Process Compose: browser DNS rebinding lets websites control local MCP tools"
+description: The process-compose MCP surface lacks Host header validation, so any website a developer visits can reach it via DNS rebinding and drive local process control tools.
+vendor: F1bonacc1
+package: github.com/f1bonacc1/process-compose
+ecosystem: go
+severity: medium
+cwe: [CWE-306, CWE-346]
+disclosed: "2026-09-18"
+year: 2026
+affected: < 1.120.0
+patched: 1.120.0
+credit: Avishai Gonen
+advisory: https://github.com/F1bonacc1/process-compose/security/advisories/GHSA-5gm3-9crp-6g3v
+tags: [dns-rebinding, mcp, host-header]
+---
+
+<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

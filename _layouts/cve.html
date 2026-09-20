@@ -1,0 +1,130 @@
+---
+layout: default
+---
+{%- comment -%}
+  Per-CVE detail page. Every field is optional — the page renders whatever the
+  document's frontmatter provides and omits the rest, so a CVE can be listed
+  with metadata only and have its narrative filled in later without touching
+  markup.
+{%- endcomment -%}
+{%- assign sev = page.severity | default: "unknown" | downcase -%}
+{%- assign ident = page.cve_id | default: page.ghsa_id | default: page.title -%}
+{%- assign body = content | strip -%}
+
+<article>
+  <header class="cve-header">
+    <div class="wrap">
+      <a class="cve-header__back" href="{{ '/vulnerabilities/' | relative_url }}">
+        <i class="bi bi-arrow-left" aria-hidden="true"></i> All vulnerabilities
+      </a>
+
+      <p class="cve-header__id">{{ ident }}{% if page.ghsa_id and page.cve_id %} &middot; {{ page.ghsa_id }}{% endif %}</p>
+
+      <h1>{{ page.title }}</h1>
+
+      <div class="cve-header__badges">
+        <span class="sev sev--{{ sev }}">{{ sev }}</span>
+        {%- if page.cvss %}<span class="cve-meta__val">CVSS {{ page.cvss }}</span>{% endif -%}
+        {%- if page.cwe -%}
+          {%- for c in page.cwe %}<span class="tag">{{ c }}</span>{% endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="cve-meta">
+      {%- if page.vendor and page.vendor != "" %}
+      <div class="cve-meta__item">
+        <div class="cve-meta__key">Vendor</div>
+        <div class="cve-meta__val">{{ page.vendor }}</div>
+      </div>
+      {%- endif %}
+
+      {%- if page.package and page.package != "" %}
+      <div class="cve-meta__item">
+        <div class="cve-meta__key">Package</div>
+        <div class="cve-meta__val">
+          {{ page.package }}{% if page.ecosystem and page.ecosystem != "" %} <span class="tag">{{ page.ecosystem }}</span>{% endif %}
+        </div>
+      </div>
+      {%- endif %}
+
+      {%- if page.affected and page.affected != "" %}
+      <div class="cve-meta__item">
+        <div class="cve-meta__key">Affected</div>
+        <div class="cve-meta__val">{{ page.affected }}</div>
+      </div>
+      {%- endif %}
+
+      {%- if page.patched and page.patched != "" %}
+      <div class="cve-meta__item">
+        <div class="cve-meta__key">Fixed in</div>
+        <div class="cve-meta__val">{{ page.patched }}</div>
+      </div>
+      {%- endif %}
+
+      {%- if page.disclosed and page.disclosed != "" %}
+      <div class="cve-meta__item">
+        <div class="cve-meta__key">Disclosed</div>
+        <div class="cve-meta__val">{{ page.disclosed }}</div>
+      </div>
+      {%- endif %}
+
+      {%- if page.credit and page.credit != "" %}
+      <div class="cve-meta__item">
+        <div class="cve-meta__key">Credit</div>
+        <div class="cve-meta__val">{{ page.credit }}</div>
+      </div>
+      {%- endif %}
+    </div>
+
+    {%- if body == "" %}
+    <div class="prose">
+      <p>
+        <em>Full writeup in progress.</em> The advisory for this issue is linked
+        below; the technical detail — root cause, exploitation and remediation —
+        will be added here.
+      </p>
+    </div>
+    {%- else %}
+    <div class="prose">
+      {{ content }}
+    </div>
+    {%- endif %}
+
+    {%- if page.tags.size > 0 %}
+    <div class="tag-row" style="margin-top:2.5rem">
+      {%- for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor -%}
+    </div>
+    {%- endif %}
+
+    <div class="link-row">
+      {%- if page.advisory and page.advisory != "" %}
+      <a href="{{ page.advisory }}" target="_blank" rel="noopener">
+        <i class="bi bi-shield-exclamation" aria-hidden="true"></i>
+        Published advisory <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+      </a>
+      {%- endif %}
+
+      {%- if page.blog and page.blog != "" %}
+      <a href="{{ page.blog }}" target="_blank" rel="noopener">
+        <i class="bi bi-journal-text" aria-hidden="true"></i>
+        Technical writeup <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+      </a>
+      {%- endif %}
+    </div>
+
+    {%- comment -%}
+      Only set where a bounty was actually awarded. Nothing here is inferred —
+      an absent value renders nothing rather than a vague "eligible" claim.
+    {%- endcomment -%}
+    {%- if page.bounty and page.bounty != "" %}
+    <div class="notice" style="margin-top:2rem">
+      <p>
+        <strong>Bug bounty awarded.</strong> Reported through {{ page.bounty }}.
+      </p>
+    </div>
+    {%- endif %}
+  </div>
+</article>

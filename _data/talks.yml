@@ -1,0 +1,17 @@
+# EMPTY ON PURPOSE — the Speaking section hides itself while this list is empty.
+#
+# Per Avishai's decision, Black Hat Europe and BSidesTLV are deliberately not
+# listed, because neither is confirmed. Publishing an unconfirmed conference as a
+# speaking credit is the kind of claim that gets checked during hiring and
+# undermines the parts of this page that are true.
+#
+# Add an entry only once a talk is accepted. Shape:
+#
+# - event: BSidesTLV 2027
+#   title: Talk title
+#   date: 2027-06-25
+#   location: Tel Aviv, IL
+#   url: https://bsidestlv.com/...
+#   slides: ""
+#   video: ""
+[]

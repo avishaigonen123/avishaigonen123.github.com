@@ -1,0 +1,50 @@
+{%- comment -%}
+  Guard on `.size > 0`, not on bare truthiness. In Liquid an empty array is
+  TRUTHY — only nil and false are falsy — so a plain existence check here would
+  render this heading with nothing underneath it.
+{%- endcomment -%}
+{%- assign profiles = site.data.profiles -%}
+
+{%- if profiles and profiles.size > 0 %}
+<section id="bounty" class="section">
+  <div class="wrap">
+    <p class="section__label">cat bounty.txt</p>
+    <h2 class="section__title">Bug Bounty</h2>
+
+    <div class="card-grid">
+      {%- for p in profiles %}
+      <div class="card">
+        <div class="card__head">
+          <i class="bi {{ p.icon | default: 'bi-shield-check' }} card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">{{ p.platform }}</h3>
+        </div>
+
+        {%- if p.handle %}
+        <div class="card__stats"><span>@{{ p.handle }}</span></div>
+        {%- endif %}
+
+        {%- if p.stats.size > 0 %}
+        <div class="card__stats">
+          {%- for s in p.stats %}
+          <span>{{ s[0] }}: <b>{{ s[1] }}</b></span>
+          {%- endfor %}
+        </div>
+        {%- endif %}
+
+        {%- if p.desc %}
+        <p class="card__body">{{ p.desc }}</p>
+        {%- endif %}
+
+        {%- if p.url %}
+        <div class="card__links">
+          <a href="{{ p.url }}" target="_blank" rel="noopener">
+            Profile <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}

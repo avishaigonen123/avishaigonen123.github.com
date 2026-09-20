@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{%- comment -%}
+  jekyll-seo-tag is the ONLY source of <title> and the canonical/og: meta.
+  Do not hardcode a <title> here as well — it would duplicate.
+  It emits nothing for title/canonical when site.title or site.url are unset,
+  which is why both are defined in _config.yml.
+{%- endcomment -%}
+{% seo %}
+
+<link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+
+{%- comment -%}
+  bootstrap-icons is standalone (a font-face plus icon classes) and safe.
+  bootstrap.min.css is deliberately NOT loaded: this page owns its layout, and
+  Bootstrap's reboot fights the design tokens. The file itself is untouched, so
+  /assets/vendor/bootstrap/css/bootstrap.min.css still resolves.
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/vendor/bootstrap-icons/bootstrap-icons.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">

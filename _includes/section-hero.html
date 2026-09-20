@@ -1,0 +1,52 @@
+{%- comment -%}
+  The headline CVE figure never overstates and never goes stale: it shows the
+  collection size once that exceeds the 14 already disclosed, and otherwise his
+  stated total. Counting the collection alone would understate the record while
+  entries are still being added; hardcoding would freeze it.
+{%- endcomment -%}
+{%- assign cve_claim = site.cves | size -%}
+{%- if cve_claim < 14 %}{% assign cve_claim = "14+" %}{% endif -%}
+
+<section id="hero" class="section hero">
+  <div class="wrap">
+    <p class="hero__prompt">
+      <b>avishai@research</b>:~$ whoami
+    </p>
+
+    <h1 class="hero__name">Avishai Gonen</h1>
+
+    <p class="hero__role">
+      <span id="typed-role"></span>
+    </p>
+
+    <p class="hero__lede">
+      I find and disclose vulnerabilities in other people's software.
+      {{ cve_claim }} CVEs published through GitHub Security Advisories, with more
+      in flight — plus several hundred CTF writeups documenting how the rest of it works.
+    </p>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="{{ '/vulnerabilities/' | relative_url }}">
+        <i class="bi bi-bug" aria-hidden="true"></i> Vulnerability Research
+      </a>
+      <a class="btn" href="https://avishaigonen123.github.io/CTF_writeups/" target="_blank" rel="noopener">
+        <i class="bi bi-journal-code" aria-hidden="true"></i> CTF Writeups
+      </a>
+      <a class="btn btn--ghost" href="#contact">
+        <i class="bi bi-envelope" aria-hidden="true"></i> Contact
+      </a>
+    </div>
+
+    <div class="hero__social">
+      <a href="https://github.com/avishaigonen123" target="_blank" rel="noopener">
+        <i class="bi bi-github" aria-hidden="true"></i> GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/avishai-gonen-997148289/" target="_blank" rel="noopener">
+        <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
+      </a>
+      <a href="mailto:avishaigonen@gmail.com">
+        <i class="bi bi-envelope-at" aria-hidden="true"></i> avishaigonen@gmail.com
+      </a>
+    </div>
+  </div>
+</section>

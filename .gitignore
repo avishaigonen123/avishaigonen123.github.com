@@ -1,0 +1,21 @@
+# Nested git repo (1.5 GB) living inside this working tree. Must never be
+# staged — Git would record it as a mode-160000 gitlink (a submodule pointer),
+# not as files, silently breaking the relationship between the two repos.
+# The trailing slash is correct here (git's matcher, unlike Jekyll's).
+CTF_writeups/
+
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+.bundle/
+vendor/bundle/
+
+# Never commit a lockfile resolved on the wrong Ruby — github-pages 232 cannot
+# install on Ruby 3.4+, and a bad lock would break the GitHub Pages build too.
+Gemfile.lock
+
+# macOS
+.DS_Store

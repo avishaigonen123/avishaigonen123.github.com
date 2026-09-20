@@ -1,0 +1,53 @@
+{%- comment -%}
+  Renders nothing at all while `_data/talks.yml` is empty.
+
+  Note the guard is `talks.size > 0` and not a bare truthiness check: an empty
+  YAML list parses to `[]`, which is TRUTHY in Liquid (only nil and false are
+  falsy), so a plain existence check would emit this heading with an empty body
+  underneath it.
+
+  Black Hat Europe and BSidesTLV are deliberately not listed — neither is
+  confirmed, and an unconfirmed conference presented as a speaking credit is the
+  kind of claim that gets checked and damages the parts of this page that are true.
+{%- endcomment -%}
+{%- assign talks = site.data.talks -%}
+
+{%- if talks and talks.size > 0 %}
+<section id="speaking" class="section">
+  <div class="wrap">
+    <p class="section__label">cat speaking.log</p>
+    <h2 class="section__title">Speaking</h2>
+
+    <div class="timeline">
+      {%- for talk in talks %}
+      <div class="job">
+        <div class="job__head">
+          <h3 class="job__title">
+            {%- if talk.url and talk.url != "" -%}
+              <a href="{{ talk.url }}" target="_blank" rel="noopener">{{ talk.title }}</a>
+            {%- else -%}
+              {{ talk.title }}
+            {%- endif -%}
+          </h3>
+          <span class="job__co">{{ talk.event }}</span>
+        </div>
+
+        <p class="job__meta">
+          {%- if talk.date %}{{ talk.date }}{% endif -%}
+          {%- if talk.location and talk.location != "" %} &middot; {{ talk.location }}{% endif -%}
+        </p>
+
+        <div class="card__links">
+          {%- if talk.slides and talk.slides != "" %}
+          <a href="{{ talk.slides }}" target="_blank" rel="noopener">Slides <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+          {%- endif %}
+          {%- if talk.video and talk.video != "" %}
+          <a href="{{ talk.video }}" target="_blank" rel="noopener">Recording <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+          {%- endif %}
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}

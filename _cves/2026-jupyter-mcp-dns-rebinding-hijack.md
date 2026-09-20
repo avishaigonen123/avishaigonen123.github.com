@@ -1,0 +1,21 @@
+---
+layout: cve
+cve_id: CVE-2026-77359
+ghsa_id: GHSA-9x8x-crjq-g64h
+title: Browser DNS rebinding can hijack the Jupyter backend through management routes
+description: Combining missing Host header validation with unauthenticated management routes, a malicious web page can rebind to the local MCP server and seize control of the Jupyter backend.
+vendor: datalayer
+package: jupyter-mcp-server
+ecosystem: pip
+severity: critical
+cwe: [CWE-350]
+disclosed: "2026-07-12"
+year: 2026
+affected: <= 1.0.2
+credit: Avishai Gonen
+advisory: https://github.com/datalayer/jupyter-mcp-server/security/advisories/GHSA-9x8x-crjq-g64h
+blog: https://pluto.security/blog/notebook-backdoor-jupyter-mcp-server/
+tags: [dns-rebinding, mcp, jupyter]
+---
+
+<!-- Narrative pending: root cause, exploitation, impact, remediation, timeline. -->

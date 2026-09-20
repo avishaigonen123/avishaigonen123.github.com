@@ -1,0 +1,45 @@
+{%- assign projects = site.data.projects -%}
+
+{%- if projects and projects.size > 0 %}
+<section id="projects" class="section">
+  <div class="wrap">
+    <p class="section__label">ls -la ./projects</p>
+    <h2 class="section__title">Projects</h2>
+
+    <div class="card-grid">
+      {%- for p in projects %}
+      <div class="card">
+        <div class="card__head">
+          <i class="bi {{ p.icon | default: 'bi-folder' }} card__icon" aria-hidden="true"></i>
+          <h3 class="card__title">{{ p.name }}</h3>
+        </div>
+
+        <div class="card__stats">
+          {%- if p.lang %}<span>{{ p.lang }}</span>{% endif -%}
+          {%- if p.stars and p.stars > 0 %}<span><b>{{ p.stars }}</b> stars</span>{% endif -%}
+        </div>
+
+        <p class="card__body">{{ p.desc }}</p>
+
+        {%- if p.tags.size > 0 %}
+        <div class="tag-row">
+          {%- for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor -%}
+        </div>
+        {%- endif %}
+
+        <div class="card__links">
+          <a href="{{ p.url }}" target="_blank" rel="noopener">
+            GitHub <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          {%- if p.site %}
+          <a href="{{ p.site }}" target="_blank" rel="noopener">
+            Live site <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          {%- endif %}
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
