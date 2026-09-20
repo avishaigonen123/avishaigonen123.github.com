@@ -9,12 +9,6 @@ layout: default
 {%- endcomment -%}
 {%- assign sev = page.severity | default: "unknown" | downcase -%}
 {%- assign ident = page.cve_id | default: page.ghsa_id | default: page.title -%}
-{%- comment -%}
-  strip_html before strip: a body containing only an HTML comment is a NON-empty
-  string, so a bare `content | strip` test would treat it as a written narrative
-  and render nothing visible at all.
-{%- endcomment -%}
-{%- assign body = content | strip_html | strip -%}
 
 <article>
   <header class="cve-header">
@@ -90,19 +84,14 @@ layout: default
       {%- endif %}
     </div>
 
-    {%- if body == "" %}
-    <div class="prose">
-      <p>
-        <em>Full writeup in progress.</em> The advisory for this issue is linked
-        below; the technical detail - root cause, exploitation and remediation -
-        will be added here.
-      </p>
-    </div>
-    {%- else %}
+    {%- comment -%}
+      No placeholder note when a narrative is absent. Most entries currently link
+      out to their advisory rather than carrying a writeup, and an apology for
+      missing content reads worse than the content simply not being there yet.
+    {%- endcomment -%}
     <div class="prose">
       {{ content }}
     </div>
-    {%- endif %}
 
     {%- if page.tags.size > 0 %}
     <div class="tag-row" style="margin-top:2.5rem">
