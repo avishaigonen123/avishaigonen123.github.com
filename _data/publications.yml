@@ -1,11 +1,37 @@
+# Journal paper plus the Pluto Security research blog posts.
+
 - title: GraphQL Injection
   venue: DigitalWhisper Magazine
   issue: DW177
   date: ""
   icon: bi-file-earmark-text
+  kind: Magazine
   desc: >-
-    Analysis of GraphQL injection vectors — how introspection and resolver
+    Analysis of GraphQL injection vectors: how introspection and resolver
     mishandling create exploitable paths, the attack chains that follow, and the
     real-world weaknesses behind them.
   url: https://digitalwhisper.co.il/files/Zines/0xB1/DW177-2-GraphQLInjection.pdf
   link_text: Read the research (PDF)
+
+- title: "The Notebook Backdoor: jupyter-mcp-server Vulnerabilities"
+  venue: Pluto Security Research
+  issue: ""
+  date: "2026-08-27"
+  icon: bi-journal-code
+  kind: Blog
+  desc: >-
+    Two CVEs in jupyter-mcp-server chain into a zero-click hijack of any live
+    Jupyter notebook connection.
+  url: https://pluto.security/blog/notebook-backdoor-jupyter-mcp-server/
+  link_text: Read the writeup
+
+- title: "Vicious Circle: Owning CircleCI's MCP Server With a Filename and a DNS Record"
+  venue: Pluto Security Research
+  issue: ""
+  date: "2026-07-29"
+  icon: bi-journal-code
+  kind: Blog
+  desc: >-
+    Chaining a filename and a DNS record to take over CircleCI's MCP server.
+  url: https://pluto.security/blog/vicious-circle-owning-circlecis-mcp-server-with-a-filename-and-a-dns-record/
+  link_text: Read the writeup

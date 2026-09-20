@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Avishai Gonen — portfolio behaviour
+   Avishai Gonen - portfolio behaviour
 
    Everything here is progressive enhancement. The page is fully readable and
    the CVE list is fully navigable with JavaScript disabled or broken:
@@ -94,7 +94,7 @@
 
      Four independent facets. Each card carries data-severity, data-year,
      data-ecosystem and a pre-lowercased data-search blob, all emitted by Jekyll
-     at build time — so this only has to compare strings.
+     at build time - so this only has to compare strings.
      ------------------------------------------------------------------------ */
 
   function initCveFilter() {

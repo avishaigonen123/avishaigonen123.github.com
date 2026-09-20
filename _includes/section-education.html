@@ -1,0 +1,41 @@
+{%- assign items = site.data.education -%}
+
+{%- if items and items.size > 0 %}
+<section id="education" class="section">
+  <div class="wrap">
+    <p class="section__label">cat education.log</p>
+    <h2 class="section__title">Education</h2>
+
+    <div class="timeline">
+      {%- for e in items %}
+      <div class="job">
+        <div class="job__head">
+          <h3 class="job__title">
+            {%- if e.url and e.url != "" -%}
+              <a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.degree }}</a>
+            {%- else -%}
+              {{ e.degree }}
+            {%- endif -%}
+          </h3>
+          <span class="job__co">{{ e.school }}</span>
+        </div>
+
+        <p class="job__meta">
+          {%- if e.start %}{{ e.start }} - {{ e.end }}{% endif -%}
+          {%- if e.location and e.location != "" %} &middot; {{ e.location }}{% endif -%}
+          {%- if e.grade and e.grade != "" %} &middot; Grade {{ e.grade }}{% endif -%}
+        </p>
+
+        {%- if e.points and e.points.size > 0 %}
+        <ul class="job__points">
+          {%- for pt in e.points %}
+          <li>{{ pt }}</li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}

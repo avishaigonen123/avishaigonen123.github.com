@@ -1,6 +1,6 @@
 {%- comment -%}
   Guard on `.size > 0`, not on bare truthiness. In Liquid an empty array is
-  TRUTHY — only nil and false are falsy — so a plain existence check here would
+  TRUTHY - only nil and false are falsy - so a plain existence check here would
   render this heading with nothing underneath it.
 {%- endcomment -%}
 {%- assign profiles = site.data.profiles -%}
@@ -14,16 +14,25 @@
     <div class="card-grid">
       {%- for p in profiles %}
       <div class="card">
+
         <div class="card__head">
+          {%- comment -%}
+            A supplied logo wins; otherwise fall back to a bootstrap-icon so the
+            row never collapses to just text.
+          {%- endcomment -%}
+          {%- if p.image and p.image != "" %}
+          <img class="card__logo" src="{{ p.image | relative_url }}" alt="{{ p.platform }} logo" loading="lazy">
+          {%- else %}
           <i class="bi {{ p.icon | default: 'bi-shield-check' }} card__icon" aria-hidden="true"></i>
+          {%- endif %}
           <h3 class="card__title">{{ p.platform }}</h3>
         </div>
 
-        {%- if p.handle %}
+        {%- if p.handle and p.handle != "" %}
         <div class="card__stats"><span>@{{ p.handle }}</span></div>
         {%- endif %}
 
-        {%- if p.stats.size > 0 %}
+        {%- if p.stats and p.stats.size > 0 %}
         <div class="card__stats">
           {%- for s in p.stats %}
           <span>{{ s[0] }}: <b>{{ s[1] }}</b></span>
@@ -31,17 +40,30 @@
         </div>
         {%- endif %}
 
-        {%- if p.desc %}
+        {%- if p.desc and p.desc != "" %}
         <p class="card__body">{{ p.desc }}</p>
         {%- endif %}
 
-        {%- if p.url %}
+        {%- comment -%}
+          Most bounty platforms send X-Frame-Options or a frame-ancestors CSP, so
+          an embed usually renders blank. It is opt-in per profile for that
+          reason; the link underneath is always present.
+        {%- endcomment -%}
+        {%- if p.embed and p.embed != "" %}
+        <div class="embed">
+          <iframe src="{{ p.embed }}" title="{{ p.platform }} profile"
+                  loading="lazy" referrerpolicy="no-referrer"></iframe>
+        </div>
+        {%- endif %}
+
         <div class="card__links">
+          {%- if p.url and p.url != "" %}
           <a href="{{ p.url }}" target="_blank" rel="noopener">
             Profile <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
           </a>
+          {%- endif %}
         </div>
-        {%- endif %}
+
       </div>
       {%- endfor %}
     </div>

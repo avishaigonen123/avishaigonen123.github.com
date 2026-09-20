@@ -1,20 +1,15 @@
-# CONFIRM: `title` and the dates are not from Avishai — the title is a neutral,
-# accurate description of the work rather than a claimed job title, and the
-# start date is omitted entirely. Replace with the real values.
-#
-# The CVE figure is worded to match the CVE list on this site (24 published and
-# independently verified against vendor and GitHub advisories). Keep the wording
-# in sync if entries are added, or drop the number and let the metrics bar carry it.
+# Taken from Avishai's LinkedIn profile.
 
 - title: Security Researcher
   company: Pluto Security
-  url: ""
-  location: ""
-  start: ""
-  end: Present
+  employment: Full-time
+  location: Tel Aviv District, Israel (On-site)
+  start: May 2026
+  end: Sep 2026
   points:
     - "Disclosed 24 CVEs in open-source AI and agent infrastructure, each published through a vendor or GitHub Security Advisory with public credit."
-    - "Specialised in the security of Model Context Protocol (MCP) servers — DNS rebinding against local transports, authentication that fails open, and sandbox escapes leading to remote code execution."
+    - "Specialised in the security of Model Context Protocol (MCP) servers: DNS rebinding against local transports, authentication that fails open, and sandbox escapes leading to remote code execution."
     - "Reported vulnerabilities through HackerOne, YesWeHack and Intigriti, including two that were awarded bug bounties."
-    - "Published technical analysis of the Jupyter MCP server attack chain on the Pluto Security research blog."
+    - "Published technical analysis of the jupyter-mcp-server attack chain and the CircleCI MCP server filename attack on the Pluto Security research blog."
+    - "Built MCP Binder, an open-source lab for reproducing MCP DNS rebinding attacks end to end."
     - "Additional disclosures pending publication."

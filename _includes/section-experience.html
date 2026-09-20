@@ -21,7 +21,7 @@
         </div>
 
         <p class="job__meta">
-          {%- if job.start %}{{ job.start }} – {{ job.end | default: "Present" }}{% endif -%}
+          {%- if job.start %}{{ job.start }} - {{ job.end | default: "Present" }}{% endif -%}
           {%- if job.location and job.location != "" %} &middot; {{ job.location }}{% endif -%}
         </p>
 

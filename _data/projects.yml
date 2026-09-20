@@ -1,5 +1,16 @@
-# Project descriptions are taken verbatim (or lightly trimmed) from the repos'
-# own GitHub descriptions, so nothing here overstates the work.
+# Descriptions for the personal repos come from their own GitHub descriptions.
+# mcp_binder is a Pluto Security org repo; its description is quoted verbatim.
+
+- name: MCP Binder
+  url: https://github.com/plutosecurity/mcp_binder
+  lang: JavaScript
+  icon: bi-bug
+  desc: >-
+    Research framework for turning MCP DNS rebinding into a live attack lab.
+    Scans local MCP servers from a Chrome extension, drives a real DNS rebinding
+    attack through your own VM and DNS zone, captures the MCP session, and
+    operates it from a token-protected dashboard.
+  tags: [mcp, dns-rebinding, research-tooling]
 
 - name: Time Side-Channel Attack
   url: https://github.com/avishaigonen123/Time-side-channel-attack
@@ -48,12 +59,3 @@
   icon: bi-robot
   desc: Telegram bot that translates and forwards messages between channels.
   tags: [python, automation]
-
-- name: Talmud Bavli Navigator
-  url: https://github.com/avishaigonen123/Talmud-Bavli-Navigator
-  lang: JavaScript
-  icon: bi-book
-  desc: >-
-    Chrome extension for opening Talmud Bavli pages quickly — built for personal
-    use during yeshiva.
-  tags: [extension, javascript]

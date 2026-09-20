@@ -2,7 +2,7 @@
 layout: cve
 cve_id: CVE-2026-81096
 title: "ToolUniverse through 1.2.6: unauthenticated RCE via python_code_executor sandbox escape"
-description: The python_code_executor tool can be escaped, and the service is reachable without authentication — together yielding remote code execution.
+description: The python_code_executor tool can be escaped, and the service is reachable without authentication - together yielding remote code execution.
 vendor: ToolUniverse
 package: ToolUniverse
 ecosystem: pip

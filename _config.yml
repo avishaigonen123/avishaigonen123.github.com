@@ -4,13 +4,13 @@ title: Avishai Gonen
 # unusable browser tab.
 tagline: Security Researcher
 description: >-
-  Security researcher — vulnerability research, CVE disclosures, bug bounty
+  Security researcher - vulnerability research, CVE disclosures, bug bounty
   and CTF writeups.
 author: Avishai Gonen
 
 # This is the GitHub Pages *user* site: served from the domain root, so baseurl
 # must stay empty. jekyll-seo-tag emits <title>, the canonical link and og:url
-# only when url/title are present — without them the head silently degrades.
+# only when url/title are present - without them the head silently degrades.
 url: "https://avishaigonen123.github.io"
 baseurl: ""
 
@@ -40,7 +40,7 @@ exclude:
 
 # jekyll-optional-front-matter is enabled by default on Pages and rewrites any
 # .md file lacking frontmatter into a rendered page. Left on, README.md would
-# additionally render as /README.html — duplicate content in the sitemap. Off,
+# additionally render as /README.html - duplicate content in the sitemap. Off,
 # README.md stays a plain StaticFile and /README.md returns 200 as markdown,
 # exactly as it does today. (Do NOT use `require_front_matter` instead: that
 # also sets remove_originals and would delete README.md.)

@@ -1,7 +1,7 @@
 ---
 layout: default
 description: >-
-  Security researcher — vulnerability research, CVE disclosures, bug bounty and
+  Security researcher - vulnerability research, CVE disclosures, bug bounty and
   CTF writeups.
 ---
 
@@ -9,19 +9,23 @@ description: >-
   Section order is deliberate: the CVE work is the centrepiece, so it sits
   directly under Experience rather than being buried below projects.
 
-  The legacy ids #hero, #about, #projects, #research and #contact are all
-  preserved so existing scroll-anchor links keep working; #research now points at
-  the relabelled Research & PoC section.
+  The legacy ids #hero, #about, #projects and #contact are preserved so existing
+  scroll-anchor links keep working. #research was removed along with the
+  Research section.
+
+  The Speaking section is deliberately present but data-driven: it renders
+  nothing at all until _data/talks.yml has an entry, so the place is kept
+  without publishing an empty heading.
 {%- endcomment -%}
 
 {% include section-hero.html %}
 {% include section-metrics.html %}
 {% include section-about.html %}
 {% include section-experience.html %}
+{% include section-education.html %}
 {% include section-vulnerabilities.html %}
 {% include section-bounty.html %}
 {% include section-publications.html %}
 {% include section-talks.html %}
 {% include section-projects.html %}
-{% include section-research.html %}
 {% include section-contact.html %}

@@ -1,23 +1,15 @@
 # Only numbers that are NOT derivable from this repo live here.
 #
 # The CVE count is deliberately absent: it is computed in section-metrics.html
-# as `site.cves | size`, so it can never disagree with the CVE list. Putting it
-# here too would reintroduce exactly the drift the collection design avoids.
+# as `site.cves | size`, so it can never disagree with the CVE list.
 #
-# CONFIRM THESE TWO — they are derived from the CTF_writeups repo, not supplied:
-#   700  = ~710 markdown files carrying frontmatter, minus index/hub pages
-#   141  = HackTheBox 29 + TryHackMe 112 writeups not marked `status: incomplete`
-# Anything not confirmed should be deleted rather than estimated.
+# CONFIRM: 700 is derived from the CTF_writeups repo (~710 markdown files
+# carrying frontmatter, minus index pages), not supplied. Delete or correct it.
 
 - label: CTF writeups published
   value: 700
   suffix: "+"
   icon: bi-journal-code
-
-- label: Lab machines rooted
-  value: 141
-  suffix: ""
-  icon: bi-terminal
 
 # Add once you have the figures, e.g.:
 # - label: Bug bounty reports resolved

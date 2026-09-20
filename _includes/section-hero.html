@@ -9,31 +9,43 @@
 
 <section id="hero" class="section hero">
   <div class="wrap">
-    <p class="hero__prompt">
-      <b>avishai@research</b>:~$ whoami
-    </p>
 
-    <h1 class="hero__name">Avishai Gonen</h1>
+    <div class="term">
+      <div class="term__bar" aria-hidden="true">
+        <span class="term__dot term__dot--r"></span>
+        <span class="term__dot term__dot--y"></span>
+        <span class="term__dot term__dot--g"></span>
+        <span class="term__title">avishai@research: ~</span>
+      </div>
 
-    <p class="hero__role">
-      <span id="typed-role"></span>
-    </p>
+      <div class="term__body">
+        <p class="term__cmd"><span class="term__ps1">$</span> whoami</p>
+        <h1 class="hero__name">Avishai Gonen</h1>
 
-    <p class="hero__lede">
-      I find and disclose vulnerabilities in other people's software.
-      {{ cve_claim }} CVEs published through GitHub Security Advisories, with more
-      in flight — plus several hundred CTF writeups documenting how the rest of it works.
-    </p>
+        <p class="term__cmd"><span class="term__ps1">$</span> cat role.txt</p>
+        <p class="hero__role"><span id="typed-role"></span></p>
+
+        <p class="term__cmd"><span class="term__ps1">$</span> cat focus.txt</p>
+        <p class="hero__lede">
+          I look for the holes in software that people and AI agents both trust,
+          get them fixed, and publish what was wrong. Most of that work lately is
+          in MCP servers, where a missing Host header check is enough to hand over
+          a developer's machine.
+        </p>
+
+        <p class="term__cmd">
+          <span class="term__ps1">$</span> ls ~/cves | wc -l
+          <span class="term__count">{{ cve_claim }}</span>
+        </p>
+      </div>
+    </div>
 
     <div class="hero__actions">
       <a class="btn btn--primary" href="{{ '/vulnerabilities/' | relative_url }}">
         <i class="bi bi-bug" aria-hidden="true"></i> Vulnerability Research
       </a>
-      <a class="btn" href="https://avishaigonen123.github.io/CTF_writeups/" target="_blank" rel="noopener">
+      <a class="btn btn--primary" href="https://avishaigonen123.github.io/CTF_writeups/" target="_blank" rel="noopener">
         <i class="bi bi-journal-code" aria-hidden="true"></i> CTF Writeups
-      </a>
-      <a class="btn btn--ghost" href="#contact">
-        <i class="bi bi-envelope" aria-hidden="true"></i> Contact
       </a>
     </div>
 
@@ -48,5 +60,6 @@
         <i class="bi bi-envelope-at" aria-hidden="true"></i> avishaigonen@gmail.com
       </a>
     </div>
+
   </div>
 </section>

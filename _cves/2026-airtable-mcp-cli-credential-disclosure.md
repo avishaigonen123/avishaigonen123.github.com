@@ -2,7 +2,7 @@
 layout: cve
 cve_id: CVE-2026-81101
 title: "Airtable MCP CLI before 0.2.5: credential disclosure via unvalidated configured endpoint"
-description: The CLI sends stored credentials to whatever endpoint is configured, without validating it — so a crafted configuration exfiltrates the user's API token.
+description: The CLI sends stored credentials to whatever endpoint is configured, without validating it - so a crafted configuration exfiltrates the user's API token.
 vendor: Airtable
 package: airtable-mcp-cli
 ecosystem: npm

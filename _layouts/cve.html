@@ -2,7 +2,7 @@
 layout: default
 ---
 {%- comment -%}
-  Per-CVE detail page. Every field is optional — the page renders whatever the
+  Per-CVE detail page. Every field is optional - the page renders whatever the
   document's frontmatter provides and omits the rest, so a CVE can be listed
   with metadata only and have its narrative filled in later without touching
   markup.
@@ -33,6 +33,12 @@ layout: default
   </header>
 
   <div class="wrap">
+    {%- if page.image and page.image != "" %}
+    <figure class="cve-figure">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+    </figure>
+    {%- endif %}
+
     <div class="cve-meta">
       {%- if page.vendor and page.vendor != "" %}
       <div class="cve-meta__item">
@@ -83,7 +89,7 @@ layout: default
     <div class="prose">
       <p>
         <em>Full writeup in progress.</em> The advisory for this issue is linked
-        below; the technical detail — root cause, exploitation and remediation —
+        below; the technical detail - root cause, exploitation and remediation -
         will be added here.
       </p>
     </div>
@@ -116,7 +122,7 @@ layout: default
     </div>
 
     {%- comment -%}
-      Only set where a bounty was actually awarded. Nothing here is inferred —
+      Only set where a bounty was actually awarded. Nothing here is inferred -
       an absent value renders nothing rather than a vague "eligible" claim.
     {%- endcomment -%}
     {%- if page.bounty and page.bounty != "" %}

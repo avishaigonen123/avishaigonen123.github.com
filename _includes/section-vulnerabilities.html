@@ -3,7 +3,7 @@
 
   Sorting is explicit in Liquid because the `sort_by` collection option needs
   Jekyll 4.0 and Pages runs 3.10. ISO dates (quoted in frontmatter, so YAML keeps
-  them strings rather than Date objects) sort correctly lexically — mixing the
+  them strings rather than Date objects) sort correctly lexically - mixing the
   two types raises Liquid::ArgumentError and fails the build.
 
   `compact` before `uniq` matters: `map` yields nil for any CVE missing the
@@ -27,7 +27,7 @@
     <div class="empty-state">
       <p>No CVEs published on this page yet.</p>
       <p>
-        Entries live in <code>_cves/</code> — one file per CVE. Adding one creates
+        Entries live in <code>_cves/</code> - one file per CVE. Adding one creates
         the card, the detail page and the counter automatically.
       </p>
     </div>
