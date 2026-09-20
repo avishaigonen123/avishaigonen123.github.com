@@ -5,9 +5,17 @@
 # `url` makes the whole tile a link. A value starting with "#" is treated as an
 # in-page anchor and left as-is; anything else goes through relative_url.
 # `prefix` renders before the number, `suffix` after it.
+#
+# 579 is not an estimate. It is the exact figure the CTF site's own counter
+# shows, reproduced from its Liquid rule:
+#   438  non-index .md files across the 12 wargame platforms
+#   + 29 HackTheBox machines (index.md not marked incomplete)
+#   + 112 TryHackMe rooms (same rule)
+# If that counter's definition ever changes, this number has to change with it,
+# or the two sites will disagree in front of the same reader.
 
 - label: CTF writeups published
-  value: 692
+  value: 579
   prefix: ""
   suffix: ""
   url: https://avishaigonen123.github.io/CTF_writeups/
