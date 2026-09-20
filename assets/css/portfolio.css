@@ -617,6 +617,46 @@ a.metric:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px;
   font-weight: 600;
 }
 
+/* Count of matching CVEs, added to each chip by JS. */
+.chip__n {
+  margin-left: 7px;
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+.chip[aria-pressed="true"] .chip__n { opacity: 0.85; }
+
+/* A facet value nothing matches. */
+.chip:disabled { opacity: 0.35; cursor: not-allowed; }
+.chip:disabled:hover { border-color: var(--border); color: var(--text-dim); }
+
+.select {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 15px;
+  cursor: pointer;
+}
+.select:focus { border-color: var(--accent); }
+
+.result-count {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.kbd-hint {
+  margin-left: 6px;
+  font-size: 0.9em;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--accent);
+  opacity: 0.8;
+}
+
 .search-input {
   font-family: var(--mono);
   font-size: 14px;
@@ -698,6 +738,33 @@ a.metric:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px;
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 13px;
+}
+
+.cve-card__badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+/* CVSS score, sat next to the severity badge. Neutral rather than tinted so it
+   reads as a number, not a second severity signal. */
+.cvss {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.cvss::before {
+  content: "CVSS ";
+  font-size: 0.82em;
+  font-weight: 400;
+  color: var(--muted);
 }
 
 .cve-card__id {
@@ -1098,7 +1165,7 @@ a.metric:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px;
   /* Chrome and the interactive bits are noise on paper. .hero__social was being
      missed, so those links printed in --muted. */
   body::before, .nav, .hero__actions, .hero__social, .filters, .footer,
-  .term__bar, .skip-link { display: none !important; }
+  .term__bar, .skip-link, .result-count, .kbd-hint { display: none !important; }
 
   /* Almost all body copy sets its colour explicitly, so setting `body { color }`
      alone left it at --text-dim (#b6c2d1) on white - about 1.8:1, effectively

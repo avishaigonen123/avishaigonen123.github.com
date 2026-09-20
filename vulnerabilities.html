@@ -98,9 +98,25 @@ description: >-
       {%- endif %}
 
       <div class="filter-group">
-        <label class="filter-group__label" for="cve-search">Search</label>
+        <label class="filter-group__label" for="cve-search">
+          Search <span class="kbd-hint" hidden>press /</span>
+        </label>
         <input class="search-input" type="search" id="cve-search"
                placeholder="vendor, package, CVE id…" autocomplete="off">
+      </div>
+
+      {%- comment -%}
+        Sort and the live count are hidden in the markup and revealed by JS.
+        Without JS they would be dead controls, and the cards already render in
+        a sensible order (newest first) so nothing is lost.
+      {%- endcomment -%}
+      <div class="filter-group" id="cve-sort-group" hidden>
+        <label class="filter-group__label" for="cve-sort">Sort</label>
+        <select class="select" id="cve-sort">
+          <option value="newest">Newest first</option>
+          <option value="cvss">Highest CVSS</option>
+          <option value="severity">Severity</option>
+        </select>
       </div>
     </div>
 
@@ -114,6 +130,8 @@ description: >-
       readers; the card titles below are h3.
     {%- endcomment -%}
     <h2 class="visually-hidden">Published advisories</h2>
+
+    <p class="result-count" id="cve-count" role="status" aria-live="polite" hidden></p>
 
     <div class="cve-grid" id="cve-grid">
       {%- for cve in sorted %}
