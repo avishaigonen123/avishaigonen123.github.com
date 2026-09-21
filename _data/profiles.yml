@@ -9,7 +9,7 @@
   url: https://hackerone.com/avishaigonen
   image: /assets/img/profiles/hackerone.png
   icon: bi-shield-check
-  desc: Web application and MCP server vulnerabilities.
+  desc: Bug bounty across public and private programmes.
 
 - platform: YesWeHack
   handle: avishaigonen
@@ -23,4 +23,18 @@
   url: https://app.intigriti.com/profile/avishaigonen_pluto
   image: /assets/img/profiles/intigriti.png
   icon: bi-shield-lock
-  desc: Vulnerability research performed through Pluto Security.
+  desc: Bug bounty across public and private programmes.
+
+- platform: Msrc
+  handle: Avishai Gonen
+  url: https://msrc.microsoft.com/special-mention
+  image: /assets/img/profiles/msrc.png
+  icon: bi-shield-slash
+  desc: Microsoft Security Response Center (MSRC) vulnerability research. (2027)
+
+- platform: INCD VDP
+  handle: אבישי גונן
+  url: https://www.gov.il/he/pages/vdp_chart
+  image: /assets/img/profiles/incd.png
+  icon: bi-shield-exclamation
+  desc: Israeli National Cyber Directorate - Vulnerability Disclosure Program (VDP) vulnerability research.

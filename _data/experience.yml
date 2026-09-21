@@ -1,5 +1,3 @@
-# From Avishai's LinkedIn. Kept deliberately short - three lines, not six.
-
 - title: Security Researcher
   company: Pluto Security
   employment: Full-time
@@ -8,5 +6,6 @@
   end: Sep 2026
   points:
     - "Disclosed 24 CVEs in open-source AI and agent infrastructure, published through vendor and GitHub Security Advisories with public credit."
-    - "Focused on Model Context Protocol servers: DNS rebinding against local transports, authentication that fails open, and sandbox escapes leading to remote code execution."
-    - "Built MCP Binder, an open-source lab for reproducing MCP DNS rebinding attacks end to end."
+    - "Focused on Model Context Protocol servers: DNS rebinding against local transports, authentication that fails open, and sandbox escapes leading to remote code execution." 
+    - "Built MCP Binder (https://github.com/plutosecurity/mcp_binder), an open-source lab for reproducing MCP DNS rebinding attacks end to end."
+    - "Hunted malicious VS Code and Open VSX extensions, building automated analysis pipelines and training AI models to identify suspicious and malicious extensions; recognized in the Open VSX Security Hall of Fame (https://researcher-recognition.open-vsx.org/hall-of-fame/)."
