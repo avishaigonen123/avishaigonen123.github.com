@@ -35,6 +35,10 @@
             <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
           </a>
         </div>
+        {%- elsif pub.pending_text and pub.pending_text != "" %}
+        <div class="card__links">
+          <span class="card__pending"><i class="bi bi-hourglass-split" aria-hidden="true"></i> {{ pub.pending_text }}</span>
+        </div>
         {%- endif %}
       </div>
       {%- endfor %}

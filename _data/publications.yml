@@ -1,5 +1,22 @@
 # Journal paper plus the Pluto Security research blog posts.
 
+- title: "A Practical Guide to Finding IDOR in the Real World"
+  venue: DigitalWhisper Magazine
+  issue: DW191
+  date: "2026-10-30"
+  icon: bi-file-earmark-text
+  kind: Magazine
+  desc: >-
+    Hands-on walkthrough of a mobile app assessment, from a Genymotion and Burp
+    Suite lab to a chain of Broken Access Control and IDOR flaws in an Israeli
+    delivery app's white-label backend: address theft, credit-card token theft
+    and full PII exposure. Written in Hebrew.
+  # Not published yet. Leave url empty until the PDF is live; the card shows
+  # `pending_text` instead of a link. Then fill url and delete pending_text.
+  url: ""
+  pending_text: Publishing Oct 30, 2026
+  link_text: Read the research (PDF)
+
 - title: GraphQL Injection
   venue: DigitalWhisper Magazine
   issue: DW177

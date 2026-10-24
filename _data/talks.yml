@@ -1,18 +1,32 @@
 # Speaking. Rendered by _includes/section-talks.html on the homepage.
 # Add an entry only once a talk is accepted.
 #
-# Shape:
-# - event: BSidesTLV 2027
-#   title: Talk title
-#   date: 2027-06-25
-#   location: Tel Aviv, IL
-#   url: https://...
-#   slides: ""
-#   video: ""
+# Fields:
+#   event, track, title, date ("YYYY-MM-DD", quoted), location, desc
+#   url     - talk page (a path starting with "/" stays on this site)
+#   slides, video - optional; shown only when non-empty
+# A talk whose date is after the build date gets an "Upcoming" badge
+# automatically (the badge updates on the next push after the talk).
 
 - event: BSidesTLV 2026
+  track: Bug Bounty Village
   title: "Redirected: open redirect in the real world"
-  location: Tel Aviv, IL
-  url: https://avishaigonen123.github.io/talks/bsidestlv-2026/
-  slides: https://avishaigonen123.github.io/talks/bsidestlv-2026/slides.pdf
+  date: "2026-11-11"
+  location: Tel Aviv University, Tel Aviv
+  desc: >-
+    Open redirects taken from a CTF warm-up to real phishing: JBL / HARMAN,
+    where the fix fell to the @ trick, and Haaretz three times over, including
+    a redirect that sends phishing from their own mail servers.
+  url: /talks/bsidestlv-2026/
+  slides: /talks/bsidestlv-2026/slides.pdf
+  video: ""
+
+- event: BSidesTLV 2026
+  track: Main Hall
+  title: "Title to be announced"
+  date: "2026-11-11"
+  location: Tel Aviv University, Tel Aviv
+  desc: ""
+  url: ""
+  slides: ""
   video: ""

@@ -1,16 +1,16 @@
 {%- comment -%}
   Renders nothing at all while `_data/talks.yml` is empty.
 
-  Note the guard is `talks.size > 0` and not a bare truthiness check: an empty
-  YAML list parses to `[]`, which is TRUTHY in Liquid (only nil and false are
-  falsy), so a plain existence check would emit this heading with an empty body
-  underneath it.
+  The guard is `talks.size > 0` and not a bare truthiness check: an empty YAML
+  list parses to `[]`, which is TRUTHY in Liquid, so a plain existence check
+  would emit this heading with an empty body underneath it.
 
-  Black Hat Europe and BSidesTLV are deliberately not listed - neither is
-  confirmed, and an unconfirmed conference presented as a speaking credit is the
-  kind of claim that gets checked and damages the parts of this page that are true.
+  Links starting with "/" are local (relative_url, same tab); anything else
+  opens in a new tab. "Upcoming" compares the quoted ISO date string with the
+  build date, which works because ISO dates sort lexically.
 {%- endcomment -%}
 {%- assign talks = site.data.talks -%}
+{%- assign today = site.time | date: "%Y-%m-%d" -%}
 
 {%- if talks and talks.size > 0 %}
 <section id="speaking" class="section">
@@ -20,30 +20,54 @@
 
     <div class="timeline">
       {%- for talk in talks %}
+      {%- assign tdate = talk.date | append: "" -%}
       <div class="job">
         <div class="job__head">
           <h3 class="job__title">
             {%- if talk.url and talk.url != "" -%}
+              {%- assign first = talk.url | slice: 0 -%}
+              {%- if first == "/" -%}
+              <a href="{{ talk.url | relative_url }}">{{ talk.title }}</a>
+              {%- else -%}
               <a href="{{ talk.url }}" target="_blank" rel="noopener">{{ talk.title }}</a>
+              {%- endif -%}
             {%- else -%}
               {{ talk.title }}
             {%- endif -%}
           </h3>
-          <span class="job__co">{{ talk.event }}</span>
+          <span class="job__co">{{ talk.event }}{% if talk.track and talk.track != "" %} &middot; {{ talk.track }}{% endif %}</span>
         </div>
 
         <p class="job__meta">
-          {%- if talk.date %}{{ talk.date }}{% endif -%}
+          {%- if tdate != "" %}{{ tdate | date: "%b %-d, %Y" }}{% endif -%}
           {%- if talk.location and talk.location != "" %} &middot; {{ talk.location }}{% endif -%}
+          {%- if tdate != "" and tdate > today %} <span class="talk__badge">Upcoming</span>{% endif -%}
         </p>
 
+        {%- if talk.desc and talk.desc != "" %}
+        <p class="card__body">{{ talk.desc }}</p>
+        {%- endif %}
+
         <div class="card__links">
-          {%- if talk.slides and talk.slides != "" %}
-          <a href="{{ talk.slides }}" target="_blank" rel="noopener">Slides <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+          {%- if talk.url and talk.url != "" %}
+          {%- assign first = talk.url | slice: 0 -%}
+          {%- if first == "/" %}
+          <a href="{{ talk.url | relative_url }}">Talk materials <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
           {%- endif %}
-          {%- if talk.video and talk.video != "" %}
-          <a href="{{ talk.video }}" target="_blank" rel="noopener">Recording <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
           {%- endif %}
+          {%- assign kinds = "slides,video" | split: "," -%}
+          {%- for kind in kinds %}
+          {%- assign link = talk[kind] -%}
+          {%- if link and link != "" %}
+          {%- assign first = link | slice: 0 -%}
+          {%- if kind == "slides" %}{% assign label = "Slides" %}{% else %}{% assign label = "Recording" %}{% endif -%}
+          {%- if first == "/" %}
+          <a href="{{ link | relative_url }}" target="_blank" rel="noopener">{{ label }} <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+          {%- else %}
+          <a href="{{ link }}" target="_blank" rel="noopener">{{ label }} <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+          {%- endif %}
+          {%- endif %}
+          {%- endfor %}
         </div>
       </div>
       {%- endfor %}
