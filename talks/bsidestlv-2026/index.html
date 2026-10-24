@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirected - BSidesTLV 2026 - Avishai Gonen</title>
+<meta name="description" content="Materials from 'Redirected: open redirect in the real world' - BSidesTLV 2026 Bug Bounty Village. Slides, demo videos and payloads by Avishai Gonen.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F4F3EF;--ink:#1C1C1A;--muted:#5E5E58;--accent:#E1392D;--card:#FFFFFF;--line:#E2DDD3;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,Arial,sans-serif;line-height:1.5;}
+.wrap{max-width:860px;margin:0 auto;padding:64px 24px 96px;}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+h1{font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;letter-spacing:-2px;line-height:.95;margin:12px 0 0;}
+h1 .dot{color:var(--accent);}
+.sub{font-size:22px;color:#3A3A35;margin:16px 0 0;max-width:640px;}
+.meta{font-size:15px;color:var(--muted);margin-top:16px;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.5px;margin:56px 0 12px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;margin:16px 0;}
+a{color:var(--accent);}
+.btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:999px;font-size:16px;}
+video{width:100%;border:1px solid var(--line);border-radius:12px;background:#05070A;margin-top:10px;}
+.vtitle{font-weight:600;font-size:18px;margin:0;}
+.vdesc{color:var(--muted);font-size:15px;margin:6px 0 0;}
+code{font-family:'JetBrains Mono',monospace;font-size:.92em;}
+ul{padding-left:20px;margin:0;}
+li{margin:8px 0;}
+.pending{border-style:dashed;border-color:#C9C4B8;color:var(--muted);}
+.disc{font-size:15px;color:var(--muted);max-width:680px;}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-top:20px;font-size:14px;color:var(--muted);}
+.links a{margin-right:18px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">BSidesTLV 2026 &middot; Bug Bounty Village</p>
+  <h1>Redirected<span class="dot">.</span></h1>
+  <p class="sub">Open redirect in the real world - how to send a phishing email. JBL, and Haaretz three times over.</p>
+  <p class="meta">Talk by Avishai Gonen &middot; materials below</p>
+
+  <h2>Slides</h2>
+  <div class="card">
+    <a class="btn" href="slides.pdf">Download slides (PDF)</a>
+    <p class="vdesc">The demo clips are below - they don't play inside the PDF.</p>
+  </div>
+
+  <h2>Demos</h2>
+  <div class="card">
+    <p class="vtitle">v1 - the redirect, start to finish</p>
+    <p class="vdesc">A genuine Haaretz login email, clicked, redirected to my page.</p>
+    <video controls preload="metadata" src="videos/haaretz-v1.mp4"></video>
+  </div>
+  <div class="card">
+    <p class="vtitle">v2 - the returnTo open redirect</p>
+    <p class="vdesc">Burp rewrites <code>returnTo</code> on the passwordless-login request; the magic link lands off-site.</p>
+    <video controls preload="metadata" src="videos/haaretz-v2.mp4"></video>
+  </div>
+  <div class="card pending">
+    <p class="vtitle">v3 - the double-slash bypass</p>
+    <p class="vdesc">Published once the fix is confirmed (responsible disclosure).</p>
+  </div>
+
+  <h2>The cases</h2>
+  <div class="card">
+    <ul>
+      <li><b>JBL / HARMAN</b> - open redirect in a recipe link; their fix fell to the <code>@</code> trick. ($350, CWE-601)</li>
+      <li><b>Haaretz</b> - open redirect that ships phishing from their own mail (passes SPF / DKIM / DMARC).</li>
+      <li><b>Haaretz, round 2</b> - a <code>returnTo</code> open redirect in the login.</li>
+      <li><b>Haaretz, round 3</b> - their fix fell to <code>login.haaretz.co.il//attacker</code> (a protocol-relative path).</li>
+    </ul>
+  </div>
+
+  <h2>Payloads</h2>
+  <div class="card">
+    <p class="vdesc" style="margin-top:0">The open-redirect bypass list from the talk.</p>
+    <p style="margin:14px 0 0"><a class="btn" href="returnTo-payloads.txt">returnTo-payloads.txt</a></p>
+  </div>
+
+  <h2>Responsible disclosure</h2>
+  <p class="disc">Every finding here was reported to the vendor and fixed before publication. Nothing on this page targets a live, unpatched system.</p>
+
+  <footer>
+    <div class="links">
+      <a href="https://avishaigonen123.github.io">avishaigonen123.github.io</a>
+      <a href="https://www.linkedin.com/in/avishai-gonen-997148289">LinkedIn</a>
+    </div>
+    <p>&copy; Avishai Gonen</p>
+  </footer>
+</div>
+</body>
+</html>
