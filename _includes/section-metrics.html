@@ -10,7 +10,11 @@
   overwrites it when it initialises, so JS-on users still get the count-up while
   a JS-off or failed-to-load user sees the true figure.
 {%- endcomment -%}
-{%- assign cve_count = site.cves | size -%}
+{%- comment -%}
+  Only advisories with an assigned CVE id count toward "CVEs published".
+  GHSA-only advisories (no cve_id) are still listed on /vulnerabilities/.
+{%- endcomment -%}
+{%- assign cve_count = site.cves | where_exp: "c", "c.cve_id" | size -%}
 {%- assign extra = site.data.metrics -%}
 {%- assign extra_count = extra | size -%}
 

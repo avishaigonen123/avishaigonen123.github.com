@@ -1,6 +1,5 @@
 ---
 layout: cve
-cve_id: CVE-2026-NONE
 ghsa_id: GHSA-fcj2-hj27-hj26
 title: "gitlab-mcp-server: caller-controlled GITLAB-URL enables SSRF in legacy HTTP mode"
 description: "When no fixed GitLab URL is configured, the legacy HTTP MCP handler takes the GitLab base URL from a caller-supplied GITLAB-URL header, validates only syntax (no private/loopback/link-local/metadata check), and sends GitLab discovery requests with the caller's token to that URL before the token is ever verified, letting any network client force the server to make requests to internal targets."

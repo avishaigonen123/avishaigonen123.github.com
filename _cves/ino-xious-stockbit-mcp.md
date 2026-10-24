@@ -1,6 +1,5 @@
 ---
 layout: cve
-cve_id: CVE-2026-NONE
 ghsa_id: GHSA-m78m-g6g8-4455
 title: "stockbit-mcp: caller-supplied confirm boolean bypasses MCP Elicitation confirmation on order-entry tools"
 description: "The order-entry tools accept a caller-supplied confirm flag that satisfies the confirmation gate on its own, so any MCP client, or a prompt-injected LLM, can place, amend or cancel brokerage orders without a human ever approving them."

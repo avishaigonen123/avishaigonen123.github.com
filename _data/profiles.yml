@@ -28,9 +28,9 @@
 - platform: Msrc
   handle: Avishai Gonen
   url: https://msrc.microsoft.com/special-mention
-  image: /assets/img/profiles/msrc.png
+  image: /assets/img/profiles/msrc.jpg
   icon: bi-shield-slash
-  desc: Microsoft Security Response Center (MSRC) vulnerability research. (2027)
+  desc: Microsoft Security Response Center (MSRC) vulnerability research. (2026)
 
 - platform: INCD VDP
   handle: אבישי גונן

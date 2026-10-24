@@ -1,16 +1,19 @@
-# Avishai Gonen's Personal Repository
+# avishaigonen123.github.io
 
-Welcome to my personal GitHub repository! Here, I showcase my projects, research, and CTF (Capture the Flag) writeups, focusing on areas like cybersecurity, reverse engineering, and web hacking.
+Source for [avishaigonen123.github.io](https://avishaigonen123.github.io) - the personal site of Avishai Gonen, security researcher (vulnerability research, CVE disclosures, bug bounty and CTF writeups).
 
-## Projects
+Built with Jekyll and served by GitHub Pages.
 
-- **[Mossad CTF](https://github.com/avishaigonen123/Mossad_CTF)**: A CTF challenge focused on network security and exploitation.
-- **[Time Side-Channel Attack](https://github.com/avishaigonen123/Time-side-channel-attack)**: Academic project implementing Time Side Channel Attacks in cryptographic systems.
-- **[CTF Writeups](https://github.com/avishaigonen123/CTF_Writeups)**: Collection of writeups from various CTF challenges.
-- **[Telegram Bot](https://github.com/avishaigonen123/TelegramBot)**: A bot developed for Telegram.
+## Where things live
 
-## About Me
+- `_data/*.yml` - homepage content: experience, education, publications, projects, bug bounty profiles, metrics and talks.
+- `_cves/` - one markdown file per disclosure. Each file becomes a page at `/cve/<file-name>/` and a card on `/vulnerabilities/`.
+  - With a CVE id: `2026-81095.md`
+  - GHSA-only: `<vendor>-<package>.md` (no `cve_id` field)
+- `_includes/` and `_layouts/` - page sections and templates.
+- `PoC/` - proof-of-concept pages.
 
-I'm a Computer Science enthusiast with a passion for cybersecurity, reverse engineering, and learning new technologies. Currently studying at the Jerusalem College of Technology, I am actively involved in personal and team-based projects related to security and programming.
+## Related
 
-Feel free to explore and connect!
+- [CTF Writeups](https://avishaigonen123.github.io/CTF_writeups/)
+- [GitHub](https://github.com/avishaigonen123)

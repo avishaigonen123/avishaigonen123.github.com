@@ -1,6 +1,5 @@
 ---
 layout: cve
-cve_id: CVE-2026-NONE
 ghsa_id: GHSA-hhq4-w9j2-38hg
 title: "mcp-web-validator: SSRF guard (assertPublicHttpUrl) is bypassable via DNS rebinding, defeating the documented private-address block"
 description: "assertPublicHttpUrl validates a hostname's resolved DNS addresses against a private/loopback/link-local blocklist but discards those addresses; fetch() and Chromium navigation then re-resolve the hostname independently, so an attacker controlling DNS can answer the validation lookup with a public IP and the connect-time lookup with a private/loopback address moments later, defeating the SSRF guard for links.broken, html.url, and screenshot.capture."

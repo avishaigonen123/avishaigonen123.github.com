@@ -1,6 +1,5 @@
 ---
 layout: cve
-cve_id: CVE-2026-NONE
 ghsa_id: GHSA-v8jh-gv7v-3gvq
 title: "ssh-mcp: command-substitution classifier bypass lets a 'safe'-only role run unapproved root commands"
 description: "ssh-mcp's command classifier never inspects the contents of $(...) or backtick substitution, so a command like echo $(sudo useradd ...) classifies as 'safe' instead of 'privileged', skipping the human-approval gate and letting a safe-only role run root commands on production SSH targets."

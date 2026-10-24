@@ -52,8 +52,10 @@ collections:
     output: true
     # Documented collection-level permalink. `:name` is the *slugified* basename,
     # so filenames must not repeat the CVE prefix or URLs come out doubled
-    # (`CVE-2024-1234.md` -> /cve/cve-2024-1234/). Files are named by
-    # vendor/product instead, with the CVE id carried in frontmatter.
+    # (`CVE-2024-1234.md` -> /cve/cve-2024-1234/). Naming convention:
+    #   - has a CVE id  -> `2026-81095.md` (id without the CVE- prefix)
+    #   - GHSA-only     -> `<vendor>-<package>.md`, no `cve_id` field
+    # Rename a GHSA-only file to the id form once its CVE is assigned.
     permalink: /cve/:name/
     # There is deliberately no `sort_by` here: it was added in Jekyll 4.0 and
     # Pages runs 3.10.0, so it would be silently ignored and CVE order
