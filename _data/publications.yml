@@ -11,10 +11,7 @@
     Suite lab to a chain of Broken Access Control and IDOR flaws in an Israeli
     delivery app's white-label backend: address theft, credit-card token theft
     and full PII exposure. Written in Hebrew.
-  # Not published yet. Leave url empty until the PDF is live; the card shows
-  # `pending_text` instead of a link. Then fill url and delete pending_text.
-  url: ""
-  pending_text: Publishing Oct 30, 2026
+  url: https://digitalwhisper.co.il/files/Zines/0xBF/DW191-4-BrokenAccessControl.pdf
   link_text: Read the research (PDF)
 
 - title: GraphQL Injection
