@@ -56,9 +56,10 @@ footer{margin-top:64px;border-top:1px solid var(--line);padding-top:20px;font-si
     <p class="vdesc">Burp rewrites <code>returnTo</code> on the passwordless-login request; the magic link lands off-site.</p>
     <video controls preload="metadata" src="videos/haaretz-v2.mp4"></video>
   </div>
-  <div class="card pending">
+  <div class="card">
     <p class="vtitle">v3 - the double-slash bypass</p>
-    <p class="vdesc">Published once the fix is confirmed (responsible disclosure).</p>
+    <p class="vdesc">The fix validated the host but built the redirect from the path; <code>//host</code> is protocol-relative, so it still went off-site. Reported and fixed.</p>
+    <video controls preload="metadata" src="videos/haaretz-v3.mp4"></video>
   </div>
 
   <h2>The cases</h2>

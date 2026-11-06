@@ -23,10 +23,13 @@
 
 - event: BSidesTLV 2026
   track: Main Hall
-  title: "Title to be announced"
+  title: "One Page to Rule Them All: Hijacking MCP Servers Using DNS Rebinding"
   date: "2026-11-11"
   location: Tel Aviv University, Tel Aviv
-  desc: ""
-  url: ""
-  slides: ""
+  desc: >-
+    DNS rebinding across the MCP ecosystem - 50+ CVEs and advisories. A CircleCI
+    MCP server taken from a web page to RCE, Docker Hub credentials abused through
+    the browser, and one unsafe Go SDK default that spread to many servers.
+  url: /talks/bsidestlv-2026-mcp/
+  slides: /talks/bsidestlv-2026-mcp/slides.pdf
   video: ""
