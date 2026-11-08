@@ -19,3 +19,6 @@ Gemfile.lock
 
 # macOS
 .DS_Store
+
+# claude outputs
+"Claude outputs/"
