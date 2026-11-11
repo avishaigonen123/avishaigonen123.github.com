@@ -7,11 +7,11 @@
 <meta name="description" content="Materials from 'One Page to Rule Them All: Hijacking MCP Servers Using DNS Rebinding' - BSidesTLV 2026 Main Hall. Slides, demos and cases by Avishai Gonen and Yotam Perkal.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-:root{--bg:#F4F3EF;--ink:#1C1C1A;--muted:#5E5E58;--accent:#E1392D;--card:#FFFFFF;--line:#E2DDD3;}
+:root{--bg:#F3F2EE;--ink:#1C2024;--muted:#6B7178;--accent:#B0760F;--card:#FCFBF9;--line:#E2DED5;}
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,Arial,sans-serif;line-height:1.5;}
 .wrap{max-width:860px;margin:0 auto;padding:64px 24px 96px;}
-.eyebrow{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#1C8CA3;}
 h1{font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;letter-spacing:-2px;line-height:.95;margin:12px 0 0;}
 h1 .dot{color:var(--accent);}
 .sub{font-size:22px;color:#3A3A35;margin:16px 0 0;max-width:660px;}
@@ -46,30 +46,34 @@ footer{margin-top:64px;border-top:1px solid var(--line);padding-top:20px;font-si
   </div>
 
   <h2>Demos</h2>
-  <div class="card pending">
-    <p class="vtitle">CircleCI - rebind to RCE</p>
-    <p class="vdesc">Video published once it is cut from the talk recording.</p>
+  <div class="card">
+    <p class="vtitle">UI-TARS desktop - unauthenticated command execution</p>
+    <p class="vdesc">The @agent-infra MCP servers bind every interface with no auth; any client that reaches the port runs commands.</p>
+    <video controls preload="metadata" src="videos/ui-tars.mp4"></video>
   </div>
-  <div class="card pending">
+  <div class="card">
+    <p class="vtitle">CircleCI - rebind to RCE</p>
+    <p class="vdesc">A web page rebinds into the local CircleCI MCP server and chains to command execution in the CI runner.</p>
+    <video controls preload="metadata" src="videos/circleci-chain.mp4"></video>
+  </div>
+  <div class="card">
     <p class="vtitle">Docker Hub - credential abuse through a browser tab</p>
-    <p class="vdesc">Held until the vendor fix is confirmed public.</p>
+    <p class="vdesc">After a rebind, the server's stored Docker Hub token is driven against the victim's own namespaces.</p>
+    <video controls preload="metadata" src="videos/dockerhub.mp4"></video>
   </div>
 
   <h2>The cases</h2>
   <div class="card">
     <ul>
-      <li><b>CircleCI MCP</b> - DNS rebinding (<code>GHSA-jwj7-74jh-p5c4</code>, CVSS 8.3) reaches the local server, which holds the developer's token; an unquoted filename in <code>run_evaluation_tests</code> is unauthenticated command injection (<code>GHSA-m9x7-h9px-p447</code>, CVSS 10.0) - RCE in the CI runner. Fixed in 0.16.1 / 0.17.0.</li>
-    </ul>
-  </div>
-  <div class="card pending">
-    <ul>
-      <li><b>Docker Hub MCP</b> - DNS rebinding turns the server's stored Docker Hub token against its owner. Details published once the fix is confirmed.</li>
-      <li><b>mark3labs/mcp-go</b> - an SDK default with no Host / Origin allowlist, inherited by downstream servers. Details published once the fix is confirmed.</li>
+      <li><b>CircleCI MCP</b> - DNS rebinding (<code>CVE-2026-95855</code>, CVSS 8.3) reaches the local server, which holds the developer's token; an unquoted filename in <code>run_evaluation_tests</code> is unauthenticated command injection (<code>CVE-2026-95856</code>, CVSS 10.0) - RCE in the CI runner. Fixed in 0.16.1 / 0.17.0.</li>
+      <li><b>Docker Hub MCP</b> - DNS rebinding turns the server's stored Docker Hub token against its owner: enumerate private namespaces and call repository-management tools (<code>createRepository</code>, <code>updateRepositoryInfo</code>) as the victim, with the token never appearing in attacker JavaScript. Fixed.</li>
+      <li><b>UI-TARS desktop</b> - the <code>@agent-infra</code> MCP servers bound every interface (<code>::</code>) with authentication optional, and the commands server passed caller input to <code>exec</code>: unauthenticated arbitrary command execution for any client that could reach the port (<code>CVE-2026-81735</code>, CVSS 10.0). Fixed by binding to <code>127.0.0.1</code> by default.</li>
+      <li><b>mark3labs/mcp-go</b> - an SDK default with no Host header validation (<code>CVE-2026-81092</code>) enables DNS rebinding, inherited by downstream servers including a Microsoft-maintained one. Fixed in 0.56.0.</li>
     </ul>
   </div>
 
   <h2>Responsible disclosure</h2>
-  <p class="disc">Everything shown here was reported to the vendor and fixed before publication. Sections marked pending stay dark until their fix is confirmed public - nothing on this page targets a live, unpatched system.</p>
+  <p class="disc">Every finding here was reported to the vendor and fixed before publication. Nothing on this page targets a live, unpatched system.</p>
 
   <footer>
     <div class="links">
