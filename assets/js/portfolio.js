@@ -325,6 +325,143 @@
   }
 
   /* ------------------------------------------------------------------------
+     CVE carousel (coverflow)
+     The markup is a working scroll strip on its own; this turns it into a
+     3D coverflow with autoplay, arrows, keyboard and swipe. Clicking a side
+     card brings it to the centre; clicking the centre card opens it.
+     ------------------------------------------------------------------------ */
+
+  function initCveCarousel() {
+    var root = document.querySelector("[data-cvc]");
+    if (!root) return;
+    var stage = root.querySelector(".cvc__stage");
+    var items = Array.prototype.slice.call(root.querySelectorAll("[data-cvc-item]"));
+    var n = items.length;
+    if (n < 2) return;
+
+    var pos = root.querySelector("[data-cvc-pos]");
+    var bar = root.querySelector("[data-cvc-bar]");
+    var bug = root.querySelector(".cvc__bug");
+    var playBtn = root.querySelector("[data-cvc-play]");
+    var controls = root.querySelector("[data-cvc-controls]");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var DELAY = 4000;
+
+    var active = 0, timer = null, userPaused = reduce, hoverPaused = false, dragged = false;
+
+    root.classList.add("is-enhanced");
+    if (controls) controls.hidden = false;
+    root.style.setProperty("--cvc-delay", DELAY + "ms");
+
+    function dist(i) {
+      var d = i - active;
+      if (d > n / 2) d -= n;
+      if (d < -n / 2) d += n;
+      return d;
+    }
+
+    function layout() {
+      var w = stage.clientWidth || 800;
+      var step = Math.max(70, Math.min(210, w * 0.24));
+      items.forEach(function (el, i) {
+        var d = dist(i), a = Math.abs(d);
+        var link = el.firstElementChild;
+        if (a > 3) {
+          el.style.opacity = "0";
+          el.style.visibility = "hidden";
+          el.style.transform = "translateX(" + (d > 0 ? 4 : -4) * step + "px) translateZ(-500px) scale(.6)";
+        } else {
+          el.style.visibility = "";
+          el.style.opacity = a === 3 ? "0.35" : "1";
+          el.style.transform = "translateX(" + d * step + "px) translateZ(" + (-a * 130) + "px) rotateY(" +
+            (d === 0 ? 0 : (d > 0 ? -1 : 1) * Math.min(35, 22 + a * 6)) + "deg) scale(" + (1 - a * 0.06) + ")";
+        }
+        el.style.zIndex = String(100 - a);
+        el.style.filter = a === 0 ? "" : "brightness(" + (0.78 - a * 0.08) + ")";
+        el.classList.toggle("is-active", d === 0);
+        if (link) link.tabIndex = d === 0 ? 0 : -1;
+        el.setAttribute("aria-hidden", d === 0 ? "false" : "true");
+      });
+      if (pos) pos.textContent = String(active + 1);
+    }
+
+    function hop() {
+      if (!bug || reduce) return;
+      bug.classList.remove("is-hop");
+      void bug.offsetWidth;
+      bug.classList.add("is-hop");
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      if (bar) { bar.classList.remove("is-running"); void bar.offsetWidth; }
+      if (userPaused || hoverPaused || document.hidden) return;
+      if (bar) bar.classList.add("is-running");
+      timer = setTimeout(function () { go(active + 1); }, DELAY);
+    }
+
+    function go(i) {
+      active = ((i % n) + n) % n;
+      layout();
+      hop();
+      schedule();
+    }
+
+    function setPlay() {
+      root.classList.toggle("is-paused", userPaused);
+      if (!playBtn) return;
+      playBtn.setAttribute("aria-label", userPaused ? "Start autoplay" : "Pause autoplay");
+      playBtn.innerHTML = '<i class="bi ' + (userPaused ? "bi-play-fill" : "bi-pause-fill") + '" aria-hidden="true"></i>';
+    }
+
+    root.querySelector("[data-cvc-prev]").addEventListener("click", function () { go(active - 1); });
+    root.querySelector("[data-cvc-next]").addEventListener("click", function () { go(active + 1); });
+    if (playBtn) playBtn.addEventListener("click", function () { userPaused = !userPaused; setPlay(); schedule(); });
+
+    items.forEach(function (el, i) {
+      el.firstElementChild.addEventListener("click", function (e) {
+        if (dragged) { e.preventDefault(); dragged = false; return; }
+        if (i !== active) { e.preventDefault(); go(i); }
+      });
+    });
+
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(active - 1); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); go(active + 1); }
+    });
+
+    stage.addEventListener("mouseenter", function () { hoverPaused = true; schedule(); });
+    stage.addEventListener("mouseleave", function () { hoverPaused = false; schedule(); });
+    root.addEventListener("focusin", function () { hoverPaused = true; schedule(); });
+    root.addEventListener("focusout", function (e) {
+      if (!root.contains(e.relatedTarget)) { hoverPaused = false; schedule(); }
+    });
+    document.addEventListener("visibilitychange", schedule);
+
+    var startX = null;
+    stage.addEventListener("pointerdown", function (e) { startX = e.clientX; dragged = false; });
+    stage.addEventListener("pointermove", function (e) {
+      if (startX !== null && Math.abs(e.clientX - startX) > 10) stage.classList.add("is-dragging");
+    });
+    function endDrag(e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX;
+      startX = null;
+      stage.classList.remove("is-dragging");
+      if (Math.abs(dx) > 40) { dragged = true; go(active + (dx < 0 ? 1 : -1)); }
+    }
+    stage.addEventListener("pointerup", endDrag);
+    stage.addEventListener("pointercancel", function () { startX = null; stage.classList.remove("is-dragging"); });
+
+    var rz;
+    window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(layout, 120); });
+
+    setPlay();
+    layout();
+    schedule();
+  }
+
+  /* ------------------------------------------------------------------------
      Bootstrap
      ------------------------------------------------------------------------ */
 
@@ -342,6 +479,7 @@
     safely(initTyped);
     safely(initCounters);
     safely(initCveFilter);
+    safely(initCveCarousel);
   }
 
   if (document.readyState === "loading") {
