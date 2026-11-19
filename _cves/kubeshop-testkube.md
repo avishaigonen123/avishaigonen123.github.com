@@ -7,6 +7,7 @@ vendor: kubeshop
 package: github.com/kubeshop/testkube
 ecosystem: go
 severity: critical
+cvss: 10.0
 cwe: [CWE-306]
 disclosed: "2026-08-19"
 year: 2026

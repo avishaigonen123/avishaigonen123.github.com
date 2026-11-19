@@ -7,6 +7,7 @@ vendor: AKzar1el
 package: mcp-web-validator
 ecosystem: npm
 severity: low
+cvss: 2.3
 cwe: [CWE-918]
 disclosed: "2026-08"
 year: 2026

@@ -5,6 +5,7 @@ description: "ibmi-mcp-server's HTTP MCP transport installs CORS but does not re
 vendor: IBM
 package: ibmi-mcp-server
 severity: high
+cvss: 9.6
 cwe: [CWE-346, CWE-306]
 year: 2026
 patched: "fix in pull request #163"

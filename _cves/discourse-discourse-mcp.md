@@ -6,6 +6,7 @@ vendor: discourse
 package: discourse-mcp
 ecosystem: npm
 severity: high
+cvss: 9.6
 cwe: [CWE-346]
 year: 2026
 patched: "fixed by commit 0064a760a00ba4ca63045bb2cc660290989f5935"

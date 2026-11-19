@@ -7,6 +7,7 @@ vendor: t8y2
 package: dbx
 ecosystem: cargo
 severity: high
+cvss: 8.8
 cwe: [CWE-306, CWE-346, CWE-350]
 disclosed: "2026-06-22"
 year: 2026

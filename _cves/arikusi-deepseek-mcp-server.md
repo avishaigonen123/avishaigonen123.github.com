@@ -7,6 +7,7 @@ vendor: arikusi
 package: deepseek-mcp-server
 ecosystem: npm
 severity: high
+cvss: 8.8
 cwe: [CWE-346]
 disclosed: "2026-09-05"
 year: 2026

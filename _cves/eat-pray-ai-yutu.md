@@ -7,6 +7,7 @@ vendor: eat-pray-ai
 package: github.com/eat-pray-ai/yutu
 ecosystem: go
 severity: medium
+cvss: 5.1
 cwe: [CWE-862]
 disclosed: "2026-08-19"
 year: 2026

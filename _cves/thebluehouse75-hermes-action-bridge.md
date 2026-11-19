@@ -7,6 +7,7 @@ vendor: TheBlueHouse75
 package: hermes-action-bridge
 ecosystem: npm
 severity: high
+cvss: 7.1
 cwe: [CWE-862]
 disclosed: "2026-08"
 year: 2026
