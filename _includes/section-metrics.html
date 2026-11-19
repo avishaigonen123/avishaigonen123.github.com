@@ -15,10 +15,14 @@
   GHSA-only advisories (no cve_id) are still listed on /vulnerabilities/.
 {%- endcomment -%}
 {%- assign cve_count = site.cves | where_exp: "c", "c.cve_id" | size -%}
+{%- comment -%}
+  Every record counts toward "Vulnerabilities disclosed", CVE or not.
+{%- endcomment -%}
+{%- assign vuln_count = site.cves | size -%}
 {%- assign extra = site.data.metrics -%}
 {%- assign extra_count = extra | size -%}
 
-{%- if cve_count > 0 or extra_count > 0 %}
+{%- if cve_count > 0 or extra_count > 0 or vuln_count > 0 %}
 <section class="section" aria-label="At a glance">
   <div class="wrap">
     <div class="metrics">
@@ -57,6 +61,15 @@
       </div>
       {%- endif %}
       {%- endfor %}
+
+      {%- if vuln_count > 0 %}
+      <a class="metric" href="{{ '/vulnerabilities/' | relative_url }}">
+        <div class="metric__value">
+          <span class="purecounter" data-purecounter-end="{{ vuln_count }}">{{ vuln_count }}</span>
+        </div>
+        <div class="metric__label">Vulnerabilities disclosed</div>
+      </a>
+      {%- endif %}
 
     </div>
   </div>

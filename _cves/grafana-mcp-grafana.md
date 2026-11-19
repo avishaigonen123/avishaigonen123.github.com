@@ -5,6 +5,8 @@ description: "The Grafana MCP server's HTTP transport did not validate the Host 
 vendor: grafana
 package: "mcp-grafana"
 ecosystem: Go
+severity: critical
+cvss: 9.6
 cwe: [CWE-346]
 disclosed: "2026-06-14"
 year: 2026
