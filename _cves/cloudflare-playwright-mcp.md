@@ -6,6 +6,7 @@ vendor: cloudflare
 package: "cloudflare/playwright-mcp"
 ecosystem: GitHub
 severity: high
+cvss: 8.2
 cwe: [CWE-346, CWE-306]
 disclosed: "2026-07-01"
 year: 2026
